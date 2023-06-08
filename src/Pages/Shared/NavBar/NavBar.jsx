@@ -13,33 +13,33 @@ const NavBar = () => {
     };
     return (
         <Container>
-            <div className="navbar">
+            <div className="navbar bg-gradient-to-r from-teal-700 to-emerald-900 pt-4">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52">
-        <li><NavLink to="/"><a>Home</a></NavLink></li>
+        <li><NavLink to="/" className="text-gray-300"><a>Home</a></NavLink></li>
         <li>
-          <NavLink to="/instructors"><a>Instructors</a></NavLink>
+          <NavLink to="/instructors" className="text-gray-300"><a>Instructors</a></NavLink>
         </li>
-        <li><NavLink to="/classes"><a>Classes</a></NavLink></li>
-        <li>{user && <NavLink to="/dashboard"><a>Dashboard</a></NavLink>}</li>
+        <li><NavLink to="/classes" className="text-gray-300"><a>Classes</a></NavLink></li>
+        <li>{user && <NavLink to="/dashboard" className="text-gray-300"><a>Dashboard</a></NavLink>}</li>
       </ul>
     </div>
     <img className='h-14 w-14' src="https://i.ibb.co/2hYBMPs/8955297-removebg-preview.png" alt="" />
-    <a className="btn btn-ghost normal-case text-xl lg:text-4xl  -ml-6 font-bold hidden lg:block">Artisans' Camp</a>
+    <a className="btn btn-ghost normal-case text-xl lg:text-4xl  -ml-6 font-bold hidden lg:block text-gray-300">Artisans' Camp</a>
     
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-xl font-semibold">
-    <li ><NavLink to="/"><a>Home</a></NavLink></li>
+    <li ><NavLink to="/" className="text-gray-300"><a>Home</a></NavLink></li>
         <li>
-          <NavLink to="/instructors"><a>Instructors</a></NavLink>
+          <NavLink to="/instructors" className="text-gray-300"><a>Instructors</a></NavLink>
         </li>
-        <li><NavLink to="/classes"><a>Classes</a></NavLink></li>
-         <li>{user && <NavLink to="/dashboard"><a>Dashboard</a></NavLink>}</li>
+        <li><NavLink to="/classes" className="text-gray-300"><a>Classes</a></NavLink></li>
+         <li>{user && <NavLink to="/dashboard" className="text-gray-300"><a>Dashboard</a></NavLink>}</li>
     </ul>
   </div>
   <div className="navbar-end">
