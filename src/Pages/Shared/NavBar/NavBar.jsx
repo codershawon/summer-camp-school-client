@@ -1,8 +1,8 @@
 import React from 'react';
 import Container from '../Container';
 import useAuth from '../../../hooks/useAuth';
-import { NavLink } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+import { BsFillBookmarkStarFill } from 'react-icons/bs'
 const NavBar = () => {
     const {user,logout}=useAuth()
     console.log(user)
@@ -40,6 +40,12 @@ const NavBar = () => {
         </li>
         <li><NavLink to="/classes" className="text-gray-300"><a>Classes</a></NavLink></li>
          <li>{user && <NavLink to="/dashboard" className="text-gray-300"><a>Dashboard</a></NavLink>}</li>
+         <Link> <li>
+            <div className="indicator">
+              <span className="indicator-item badge badge-secondary">+</span>
+              <BsFillBookmarkStarFill className='text-white'/>
+            </div>
+          </li></Link>
     </ul>
   </div>
   <div className="navbar-end">

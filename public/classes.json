@@ -1,95 +1,82 @@
 [
-    {
-        "id": 1,
-        "image": "https://i.ibb.co/LS4Zm73/photo-1560831340-b9679dc9e9f0-ixlib-rb-4-0.jpg",
-        "name": "Painting Workshop",
-        "instructorName": "Emma Thompson",
-        "availableSeats": 10,
-        "price": 50,
-        "numberOfStudents": 8
-    },
-    {
-        "id": 2,
-        "image": "https://i.ibb.co/3cTd1Gw/photo-1508269151431-a34449ca161d-ixlib-rb-4-0.jpg",
-        "name": "Pottery Course",
-        "instructorName": "Michael Johnson",
-        "availableSeats": 8,
-        "price": 60,
-        "numberOfStudents": 4
-    },
-    {
-        "id": 3,
-        "image": "https://i.ibb.co/0Vgmvbq/photo-1537884557178-342a575d7d16-ixlib-rb-4-0.jpg",
-        "name": "Drawing Techniques",
-        "instructorName": "Sophia Davis",
-        "availableSeats": 12,
-        "price": 40,
-        "numberOfStudents": 10
-    },
-    {
-        "id": 4,
-        "image": "https://i.ibb.co/TwYkkv3/photo-1541944743827-e04aa6427c33-ixlib-rb-4-0.jpg",
-        "name": "Craft Making",
-        "instructorName": "David Wilson",
-        "availableSeats": 6,
-        "price": 70,
-        "numberOfStudents": 2
-    },
-    {
-        "id": 5,
-        "image": "https://i.ibb.co/jZZ6tdf/photo-1541618016834-667715db6e8d-ixlib-rb-4-0.jpg",
-        "name": "Sculpture Workshop",
-        "instructorName": "Olivia Anderson",
-        "availableSeats": 5,
-        "price": 80,
-        "numberOfStudents": 3
-    },
-    {
-        "id": 6,
-        "image": "https://i.ibb.co/HTD00Jh/photo-1583407723467-9b2d22504831-ixlib-rb-4-0.jpg",
-        "name": "Collage Art",
-        "instructorName": "William Brown",
-        "availableSeats": 8,
-        "price": 55,
-        "numberOfStudents": 6
-    },
-    {
-        "id": 7,
-        "image": "https://i.ibb.co/7Nc9p8H/photo-1613206468203-fa00870edf79-ixlib-rb-4-0.jpg",
-        "name": "Watercolor Painting",
-        "instructorName": "Robert Campbell",
-        "availableSeats": 8,
-        "price": 55,
-        "numberOfStudents": 5
-    },
-    {
-        "id": 8,
-        "image": "https://i.ibb.co/YfYby19/photo-1584441111371-2777a92b0141-ixlib-rb-4-0.jpg",
-        "name": "Figure Drawing",
-        "instructorName": "Daniel Cooper",
-        "availableSeats": 6,
-        "price": 45,
-        "numberOfStudents": 1
-    },
-    {
-        "id": 9,
-        "image": "https://i.ibb.co/T4z127z/premium-photo-1673814842411-3398fc4c9fe5-ixlib-rb-4-0.jpg",
-        "name": "Paper Crafts",
-        "instructorName": "Sophie Mitchell",
-        "availableSeats": 10,
-        "price": 50,
-        "numberOfStudents": 9
-    },
-    {
-        "id": 10,
-        "image": "https://i.ibb.co/r5FPPW4/photo-1518503848216-424c4063425a-ixlib-rb-4-0.jpg",
-        "name": "Mixed Media Art",
-        "instructorName": "Nathan Clark",
-        "availableSeats": 8,
-        "price": 65,
-        "numberOfStudents": 7
-    }
+  {
+    "image": "https://i.ibb.co/LS4Zm73/photo-1560831340-b9679dc9e9f0-ixlib-rb-4-0.jpg",
+    "name": "Painting Workshop",
+    "instructorName": "Emma Thompson",
+    "availableSeats": 10,
+    "price": 50,
+    "numberOfStudents": 8
+  },
+  {
+    "image": "https://i.ibb.co/3cTd1Gw/photo-1508269151431-a34449ca161d-ixlib-rb-4-0.jpg",
+    "name": "Pottery Course",
+    "instructorName": "Michael Johnson",
+    "availableSeats": 8,
+    "price": 60,
+    "numberOfStudents": 4
+  },
+  {
+    "image": "https://i.ibb.co/0Vgmvbq/photo-1537884557178-342a575d7d16-ixlib-rb-4-0.jpg",
+    "name": "Drawing Techniques",
+    "instructorName": "Sophia Davis",
+    "availableSeats": 12,
+    "price": 40,
+    "numberOfStudents": 10
+  },
+  {
+    "image": "https://i.ibb.co/TwYkkv3/photo-1541944743827-e04aa6427c33-ixlib-rb-4-0.jpg",
+    "name": "Craft Making",
+    "instructorName": "David Wilson",
+    "availableSeats": 6,
+    "price": 70,
+    "numberOfStudents": 2
+  },
+  {
+    "image": "https://i.ibb.co/jZZ6tdf/photo-1541618016834-667715db6e8d-ixlib-rb-4-0.jpg",
+    "name": "Sculpture Workshop",
+    "instructorName": "Olivia Anderson",
+    "availableSeats": 5,
+    "price": 80,
+    "numberOfStudents": 3
+  },
+  {
+    "image": "https://i.ibb.co/HTD00Jh/photo-1583407723467-9b2d22504831-ixlib-rb-4-0.jpg",
+    "name": "Collage Art",
+    "instructorName": "William Brown",
+    "availableSeats": 8,
+    "price": 55,
+    "numberOfStudents": 6
+  },
+  {
+    "image": "https://i.ibb.co/7Nc9p8H/photo-1613206468203-fa00870edf79-ixlib-rb-4-0.jpg",
+    "name": "Watercolor Painting",
+    "instructorName": "Robert Campbell",
+    "availableSeats": 8,
+    "price": 55,
+    "numberOfStudents": 5
+  },
+  {
+    "image": "https://i.ibb.co/YfYby19/photo-1584441111371-2777a92b0141-ixlib-rb-4-0.jpg",
+    "name": "Figure Drawing",
+    "instructorName": "Daniel Cooper",
+    "availableSeats": 6,
+    "price": 45,
+    "numberOfStudents": 1
+  },
+  {
+    "image": "https://i.ibb.co/T4z127z/premium-photo-1673814842411-3398fc4c9fe5-ixlib-rb-4-0.jpg",
+    "name": "Paper Crafts",
+    "instructorName": "Sophie Mitchell",
+    "availableSeats": 10,
+    "price": 50,
+    "numberOfStudents": 9
+  },
+  {
+    "image": "https://i.ibb.co/r5FPPW4/photo-1518503848216-424c4063425a-ixlib-rb-4-0.jpg",
+    "name": "Mixed Media Art",
+    "instructorName": "Nathan Clark",
+    "availableSeats": 8,
+    "price": 65,
+    "numberOfStudents": 7
+  }
 ]
-
-
-
