@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../../Shared/Container';
 import "./PopularClasses.css"
-// import Classes from './Classes';
 const PopularClasses = () => {
     const [classes,setClasses]=useState([])
     classes.sort((a, b) => b.numberOfStudents - a.numberOfStudents)
@@ -12,7 +11,7 @@ const PopularClasses = () => {
     },[])
     return (
         <Container>
-            <div className='mt-10 mb-20'>
+            <div className='mt-20 mb-20'>
                 <h1 id='class' className='text-center text-4xl font-bold mx-auto uppercase mb-10'>Popular Classes</h1>
                 <div className='grid grid-cols-3'>
                 {topClasses.map((item) => (

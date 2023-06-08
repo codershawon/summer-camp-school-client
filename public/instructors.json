@@ -44,30 +44,32 @@
     },
     {
         "id": 7,
-        "image": "https://i.ibb.co/7Nc9p8H/photo-1613206468203-fa00870edf79-ixlib-rb-4-0.jpg",
+        "image": "https://i.ibb.co/5kQFVYT/closeup-pottery-hands-cutting-clay-with-tool-53876-30093.jpg" ,
         "instructorName": "Robert Campbell",
         "email": "robert@gmail.com",
-        "numberOfStudents": 5
-    },
-    {
-        "id": 8,
-        "image": "https://i.ibb.co/YfYby19/photo-1584441111371-2777a92b0141-ixlib-rb-4-0.jpg",
-        "instructorName": "Daniel Cooper",
-        "email": "daniel@gmail.com",
         "numberOfStudents": 1
     },
     {
+        "id": 8,
+        "image": "https://i.ibb.co/4WrtFHR/front-view-male-painter-holding-paints-preparing-draw-white-wall-140725-101317.jpg" ,
+        "instructorName": "Daniel Cooper",
+        "email": "daniel@gmail.com",
+        "numberOfStudents": 5
+    },
+    {
         "id": 9,
-        "image": "https://i.ibb.co/T4z127z/premium-photo-1673814842411-3398fc4c9fe5-ixlib-rb-4-0.jpg",
+        "image": "https://i.ibb.co/LNtzdkL/attractive-hispanic-teacher-is-teaching-pretty-child-girl-how-use-paint-brush-canvas-during-art-clas.jpg" ,
         "instructorName": "Sophie Mitchell",
         "email": "sophie@gmail.com",
         "numberOfStudents": 9
     },
     {
         "id": 10,
-        "image": "https://i.ibb.co/r5FPPW4/photo-1518503848216-424c4063425a-ixlib-rb-4-0.jpg",
+        "image": 
+        "https://i.ibb.co/W5qYjhP/paint-composition-with-female-model-23-2147868276.jpg" ,
         "instructorName": "Nathan Clark",
         "email": "nathan@gmail.com",
         "numberOfStudents": 7
     }
 ]
+
