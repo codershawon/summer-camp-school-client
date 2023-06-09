@@ -25,10 +25,17 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        updateUserProfile(data.name, data.photoURL)
+        updateUserProfile(data.name, data.photoURL).then(()=>{
+          const saveUser={name:data.name,email:data.email}
+          fetch("http://localhost:4000/user",{
+              method:"POST",
+              headers:{
+                "Content-Type":"application/json"
+              },
+              body:JSON.stringify(saveUser)
+          })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.insertedId) {
               reset();
               Swal.fire({
@@ -43,6 +50,7 @@ const Register = () => {
           });
       })
       .catch((error) => console.log(error));
+    })
   };
   return (
     <Container>

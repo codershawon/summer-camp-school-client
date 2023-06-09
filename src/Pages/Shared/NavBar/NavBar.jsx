@@ -42,10 +42,10 @@ const NavBar = () => {
         </li>
         <li><NavLink to="/classes" className="text-gray-300"><a>Classes</a></NavLink></li>
          <li>{user && <NavLink to="/dashboard" className="text-gray-300"><a>Dashboard</a></NavLink>}</li>
-         <Link> <li>
+         <Link to="/dashboard/bookedClass"> <li>
             <div className="indicator">
               <span className="indicator-item badge badge-primary">{bookedClass?.length || 0}+</span>
-              <BsFillBookmarkStarFill className='text-white'/>
+              <BsFillBookmarkStarFill className='text-white '/>
             </div>
           </li></Link>
     </ul>

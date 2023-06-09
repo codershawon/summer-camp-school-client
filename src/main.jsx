@@ -18,6 +18,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Dashboard from "./Layout/Dashboard";
 import SelectedClass from "./Pages/Dashboard/SelectedClass/SelectedClass";
 import Payment from "./Pages/Payment/Payment";
+import EnrolledClasses from "./Pages/Enrolled Classes/EnrolledClasses";
+import ManageUsers from "./Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -56,8 +58,16 @@ const router = createBrowserRouter([
         element:<SelectedClass></SelectedClass>
       },
       {
-        path:"payment",
+        path:"payments",
         element:<Payment></Payment>
+      },
+      {
+        path:"enrolledClasses",
+        element:<EnrolledClasses></EnrolledClasses>,
+      },
+      {
+        path:"manageUsers",
+        element:<ManageUsers></ManageUsers>
       },
     ]
   },

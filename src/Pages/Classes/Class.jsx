@@ -56,7 +56,7 @@ const Class = ({ item, index }) => {
         <img src={image} alt="" />
       </td>
       <td className="bg-white text-black">{name}</td>
-      <td className="bg-white text-black">${availableSeats}</td>
+      <td className="bg-white text-black">{availableSeats}</td>
       <td className="bg-white text-black">${price}</td>
       <td className="bg-white text-black">
         <Link>

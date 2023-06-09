@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import "./CheckoutForm.css";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const CheckoutForm = ({ bookedClass, price }) => {
   const stripe = useStripe();
   const [cardError, setCardError] = useState("");
@@ -12,7 +14,6 @@ const CheckoutForm = ({ bookedClass, price }) => {
   const [axiosSecure] = useAxiosSecure("http://localhost:4000");
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
-  const [bookingClass, setBookingClass] = useState([]);
 
   useEffect(() => {
     if (price > 0) {
@@ -54,29 +55,14 @@ const CheckoutForm = ({ bookedClass, price }) => {
           },
         },
       });
-    // .then(function (result) {
     // Handle result.error or result.paymentIntent
     if (confirmError) {
       console.log(confirmError);
     }
     console.log(paymentIntent);
-    // });
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
       setTransactionID(paymentIntent.id);
-      // Update available seats on the client side
-      const updatedClass = bookingClass.map((item) => {
-        if (item._id === payment._id) {
-          return {
-            ...item,
-            availableSeats: item.availableSeats - 1,
-          };
-        }
-        return item;
-      });
-
-      setBookingClass(updatedClass);
-      //save payment information to the server
       const payment = {
         email: user?.email,
         transactionID: paymentIntent.id,
@@ -94,6 +80,13 @@ const CheckoutForm = ({ bookedClass, price }) => {
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your payment for booking class successful',
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
       });
     }
@@ -138,7 +131,7 @@ const CheckoutForm = ({ bookedClass, price }) => {
       </form>
       {cardError && <p className="text-red-800 ml-52">{cardError}</p>}
       {transactionID && (
-        <p className="text-[#07332F] ml-52">
+        <p className="text-blue-900 ml-20 text-xl">
           Payment complete with transactionID: {transactionID}
         </p>
       )}

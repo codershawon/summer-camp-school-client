@@ -1,0 +1,13 @@
+#classes {
+    position: relative;
+  }
+  
+  #classes:hover::after {
+    content: '';
+    position: absolute;
+    left: 370px;
+    bottom: -5px; 
+    width: 250px;
+    height: 3px; 
+    background-color: #07332F; 
+  }

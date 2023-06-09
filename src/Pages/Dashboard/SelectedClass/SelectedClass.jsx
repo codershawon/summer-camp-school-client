@@ -95,7 +95,7 @@ const SelectedClass = () => {
                       </span>
                     </td>
                     <td className="bg-gray text-black">
-                      <Link to="/dashboard/payment">
+                      <Link to="/dashboard/payments">
                         <button
                           className="btn text-white"
                           style={{ backgroundColor: "#07332F" }}
