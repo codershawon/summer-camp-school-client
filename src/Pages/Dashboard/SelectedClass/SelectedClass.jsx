@@ -41,10 +41,9 @@ const SelectedClass = () => {
               <h1  id="classes"
         className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20">Selected Classes</h1>
             <div className='bg-gray-100 w-[990px] p-10 rounded-lg'>
-            <div className="flex justify-between items-center text-2xl w-[920px] mx-auto">
-                <h2>Total Selected Classes: {bookedClass.length}</h2>
-                <Link><button className="btn text-white" style={{backgroundColor:"#07332F"}}>Pay</button></Link>
-              </div>
+        
+                <h2 className='text-2xl font-bold uppercase'>Total Selected Classes: {bookedClass.length}</h2>
+              
               <div className="overflow-x-auto">
           <table className="table w-[920px] mx-auto mt-4 text-white">
             {/* head */}
@@ -58,6 +57,7 @@ const SelectedClass = () => {
                 <th className="bg-[#07332F]">Number of students</th>
                 <th className="bg-[#07332F]">PRICE</th>
                 <th className="bg-[#07332F]">ACTION</th>
+                <th className="bg-[#07332F]">Payment</th>
               </tr>
             </thead>
             <tbody>
@@ -77,6 +77,9 @@ const SelectedClass = () => {
                     <span onClick={() => handleDelete(item)}>
                       <MdOutlineDeleteOutline className="bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />
                     </span>
+                  </td>
+                  <td className="bg-gray text-black">
+                  <Link to="/dashboard/payment"><button className="btn text-white" style={{backgroundColor:"#07332F"}}>Pay</button></Link>
                   </td>
                 </tr>
               ))}

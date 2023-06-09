@@ -17,6 +17,7 @@ import Classes from "./Pages/Classes/Classes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Dashboard from "./Layout/Dashboard";
 import SelectedClass from "./Pages/Dashboard/SelectedClass/SelectedClass";
+import Payment from "./Pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path:"bookedClass",
         element:<SelectedClass></SelectedClass>
+      },
+      {
+        path:"payment",
+        element:<Payment></Payment>
       },
     ]
   },
