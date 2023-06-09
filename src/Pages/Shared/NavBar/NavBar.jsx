@@ -3,8 +3,10 @@ import Container from '../Container';
 import useAuth from '../../../hooks/useAuth';
 import { Link, NavLink } from 'react-router-dom';
 import { BsFillBookmarkStarFill } from 'react-icons/bs'
+import useClass from '../../../hooks/useClass';
 const NavBar = () => {
     const {user,logout}=useAuth()
+    const [bookedClass]=useClass()
     console.log(user)
     const handleLogOut = () => {
       logout()
@@ -42,7 +44,7 @@ const NavBar = () => {
          <li>{user && <NavLink to="/dashboard" className="text-gray-300"><a>Dashboard</a></NavLink>}</li>
          <Link> <li>
             <div className="indicator">
-              <span className="indicator-item badge badge-secondary">+</span>
+              <span className="indicator-item badge badge-primary">{bookedClass?.length || 0}+</span>
               <BsFillBookmarkStarFill className='text-white'/>
             </div>
           </li></Link>

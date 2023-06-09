@@ -14,6 +14,9 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Instructors from "./Pages/Instructors/Instructors";
 import Classes from "./Pages/Classes/Classes";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Dashboard from "./Layout/Dashboard";
+import SelectedClass from "./Pages/Dashboard/SelectedClass/SelectedClass";
 
 const router = createBrowserRouter([
   {
@@ -43,10 +46,21 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:"dashboard",
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:"bookedClass",
+        element:<SelectedClass></SelectedClass>
+      },
+    ]
+  },
+  
 ]);
-
+const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProviders><HelmetProvider><RouterProvider router={router} /></HelmetProvider></AuthProviders>
+    <AuthProviders><HelmetProvider><QueryClientProvider client={queryClient}><RouterProvider router={router} /></QueryClientProvider></HelmetProvider></AuthProviders>
   </React.StrictMode>
 );
