@@ -10,7 +10,7 @@ const Payment = () => {
     const price=parseFloat(total.toFixed(2))
     return (
         <div>
-            <Elements stripe={stripePromise}> <CheckoutForm bookedClass={bookedClass} price={price}></CheckoutForm></Elements>
+            <Elements stripe={stripePromise}> <CheckoutForm bookedClass={bookedClass}  price={price}></CheckoutForm></Elements>
         </div>
     );
 };

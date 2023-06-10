@@ -1,9 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Main from "./Layout/Main";
 import RouteError from "./Pages/RouteError/RouteError";
@@ -20,67 +17,89 @@ import SelectedClass from "./Pages/Dashboard/SelectedClass/SelectedClass";
 import Payment from "./Pages/Payment/Payment";
 import EnrolledClasses from "./Pages/Enrolled Classes/EnrolledClasses";
 import ManageUsers from "./Pages/Dashboard/ManageUsers/ManageUsers";
-// import AdminRoute from "./Routes/AdminRoute";
+import AdminRoute from "./Routes/AdminRoute";
+import AddClass from "./Pages/Dashboard/AddClass/AddClass";
+import MyClass from "./Pages/Dashboard/MyClass/MyClass";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Main></Main>,
-    errorElement:<RouteError></RouteError>,
-    children:[
+    element: <Main></Main>,
+    errorElement: <RouteError></RouteError>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:"/register",
-        element:<Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:"/instructors",
-        element:<Instructors></Instructors>
+        path: "/instructors",
+        element: <Instructors></Instructors>,
       },
       {
-        path:"/classes",
-        element:<Classes></Classes>
+        path: "/classes",
+        element: <Classes></Classes>,
       },
-    ]
+    ],
   },
   {
-    path:"dashboard",
-    element:<Dashboard></Dashboard>,
-    children:[
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
       //student routes
       {
-        path:"bookedClass",
-        element:<SelectedClass></SelectedClass>
+        path: "bookedClass",
+        element: <SelectedClass></SelectedClass>,
       },
       {
-        path:"payments",
-        element:<Payment></Payment>
+        path: "payments",
+        element: <Payment></Payment>,
       },
       {
-        path:"enrolledClasses",
-        element:<EnrolledClasses></EnrolledClasses>,
+        path: "enrolledClasses",
+        element: <EnrolledClasses></EnrolledClasses>,
+      },
+
+      //instructor routes
+      {
+        path: "addClass",
+        element: <AddClass></AddClass>,
       },
       {
-        path:"manageUsers",
-        element:<ManageUsers></ManageUsers>
+        path: "myClass",
+        element: <MyClass></MyClass>,
       },
 
       //admin routes
+      {
+        path: "manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+
       
-    ]
+    ],
   },
-  
 ]);
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProviders><HelmetProvider><QueryClientProvider client={queryClient}><RouterProvider router={router} /></QueryClientProvider></HelmetProvider></AuthProviders>
+    <AuthProviders>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </HelmetProvider>
+    </AuthProviders>
   </React.StrictMode>
 );

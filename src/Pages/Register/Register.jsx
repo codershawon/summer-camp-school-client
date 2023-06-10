@@ -107,6 +107,22 @@ const Register = () => {
               </div>
             </div>
             <div className="font-bold mt-5">
+              <h5>Photo URL</h5>
+              <input
+                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                type="text"
+                name="photo"
+                id=""
+                placeholder="Enter your photoURL"
+                {...register("photoURL", { required: true })}
+              />
+              <div>
+                {errors.photoURL && (
+                  <span className="text-red-800">Photo URL is required</span>
+                )}
+              </div>
+            </div>
+            <div className="font-bold mt-5">
               <h5>Password</h5>
               <input
                 className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
