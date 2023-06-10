@@ -5,6 +5,7 @@ import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser } = useAuth();

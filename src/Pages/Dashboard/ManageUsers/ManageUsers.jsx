@@ -107,12 +107,12 @@ const ManageUsers = () => {
                       {item.email}
                     </td>
                     <td className="bg-gray text-black">
-                     {item.role==="admin"? "admin":<span onClick={() => handleMakeAdmin(item)} >
+                     {item.role==="admin"?  <FaUserShield className="disable opacity-30 bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />:<span onClick={() => handleMakeAdmin(item)} >
                       <FaUserShield className="bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />
                     </span>}
                     </td>
                     <td className="bg-gray text-black">
-                    {item.role==="instructor"? "Instructor":<span onClick={() => handleMakeInstructor(item)}>
+                    {item.role==="instructor"? <GiTeacher className="disable opacity-30 bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />:<span onClick={() => handleMakeInstructor(item)}>
                       <GiTeacher className="bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />
                     </span>}
                     </td>

@@ -5,15 +5,16 @@ import { useQuery } from 'react-query';
 
 const useClass = () => {
     const {user}=useAuth()
+    console.log(user)
     const [axiosSecure]=useAxiosSecure("http://localhost:4000")
     const {isLoading,
         refetch,
-        data: selectedClass = [],
+        data: bookedClass = [],
       }=useQuery(["bookedClass",user?.email], async ()=>{
         const response = await axiosSecure.get(`/bookedClass?email=${user?.email}`);
         return response.data;
       })
-    return [selectedClass,refetch]
+    return [bookedClass,refetch,isLoading]
 };
 
 export default useClass;

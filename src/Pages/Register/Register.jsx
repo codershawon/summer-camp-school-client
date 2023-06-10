@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
+
   const navigate = useNavigate();
   const {
     register,

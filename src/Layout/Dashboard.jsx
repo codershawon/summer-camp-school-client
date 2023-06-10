@@ -12,8 +12,8 @@ import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const [bookedClass] = useClass();
-  const isAdmin = useAdmin();
-  const isInstructor = useInstructor();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <Container>
@@ -32,42 +32,50 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-[#07332F] text-gray-400 text-lg font-bold">
             {/* Sidebar content here */}
-            {isAdmin ? <>
-              <li className="list-item">
-              <NavLink to="/admin">
-                <AiFillHome /> Admin Home
-              </NavLink>
-            </li>
-              <li className="list-item">
-              <NavLink to="/dashboard/manageClasses">
-                <AiFillHome /> Manage Classes
-              </NavLink>
-            </li>
-              <li className="list-item">
-              <NavLink to="/dashboard/manageUsers">
-                <AiFillHome /> Manage Users
-              </NavLink>
-            </li>
-            </> : isInstructor ? <>
-            <li className="list-item">
-              <NavLink to="/instructor">
-                <AiFillHome /> Instructor Home
-              </NavLink>
-            </li>
-            <li className="list-item">
-              <NavLink to="/addClass">
-                <AiFillHome /> Add a Class
-              </NavLink>
-            </li>
-            <li className="list-item">
-              <NavLink to="/myClasses">
-                <AiFillHome /> My Classes
-              </NavLink>
-            </li>
-              </> : (
+            {isAdmin && (
               <>
                 <li className="list-item">
-                  <NavLink to="/">
+                  <NavLink to="/dashboard/admin">
+                    <AiFillHome /> Admin Home
+                  </NavLink>
+                </li>
+                <li className="list-item">
+                  <NavLink to="/dashboard/manageClasses">
+                    <AiFillHome /> Manage Classes
+                  </NavLink>
+                </li>
+                <li className="list-item">
+                  <NavLink to="/dashboard/manageUsers">
+                    <AiFillHome /> Manage Users
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {isInstructor && (
+              <>
+                <li className="list-item">
+                  <NavLink to="/dashboard/instructor">
+                    <AiFillHome /> Instructor Home
+                  </NavLink>
+                </li>
+                <li className="list-item">
+                  <NavLink to="/dashboard/addClass">
+                    <AiFillHome /> Add a Class
+                  </NavLink>
+                </li>
+                <li className="list-item">
+                  <NavLink to="/dashboard/myClasses">
+                    <AiFillHome /> My Classes
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {!isAdmin && !isInstructor && (
+              <>
+                <li className="list-item">
+                  <NavLink to="/dashboard/student">
                     <AiFillHome /> Student Home
                   </NavLink>
                 </li>
@@ -119,4 +127,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
 
