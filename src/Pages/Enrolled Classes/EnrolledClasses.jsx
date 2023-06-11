@@ -1,14 +1,41 @@
 import React from 'react';
 import useEnrolledClasses from '../../hooks/useEnrolledClasses';
+import { MdOutlineDeleteOutline } from 'react-icons/md';
+import Swal from 'sweetalert2';
 
 
 const EnrolledClasses = () => {
-  const enrolledClasses=useEnrolledClasses()
+  const [enrolledClasses,refetch]=useEnrolledClasses()
   console.log(enrolledClasses)
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:4000/payments/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
   
     return (
         <div>
-            <h1>Enrolled Classes</h1>
+            <h1 id="classes"
+          className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20">Enrolled Classes</h1>
             <table className="table w-[920px] mx-auto mt-4 text-white">
               {/* head */}
               <thead>
@@ -17,11 +44,9 @@ const EnrolledClasses = () => {
                   <th className="bg-[#07332F]">IMAGE</th>
                   <th className="bg-[#07332F]">NAME</th>
                   <th className="bg-[#07332F]">Instructor Name</th>
-                  <th className="bg-[#07332F]">Available seats</th>
                   <th className="bg-[#07332F]">Number of students</th>
                   <th className="bg-[#07332F]">PRICE</th>
-                  <th className="bg-[#07332F]">ACTION</th>
-                  <th className="bg-[#07332F]">Payment</th>
+                  <th className="bg-[#07332F]">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -30,33 +55,20 @@ const EnrolledClasses = () => {
                   <tr key={item._id}>
                     <th className="bg-gray text-black">{index + 1}</th>
                     <td className="w-20 h-20 rounded-lg bg-gray">
-                      {/* <img src={} alt="" /> */}
+                      <img src={item.image} alt="" />
                     </td>
-                    <td className="bg-gray text-black">{item.email}</td>
+                    <td className="bg-gray text-black">{item.className}</td>
                     <td className="bg-gray text-black">
-                      {}
-                    </td>
-                    <td className="bg-gray text-black">
-                      {}
+                      {item.instructorName}
                     </td>
                     <td className="bg-gray text-black">
                       {item.numberOfStudents}
                     </td>
                     <td className="bg-gray text-black">${item.price}</td>
                     <td className="bg-gray text-black">
-                      {/* <span onClick={() => handleDelete(item)}>
+                      <span onClick={() => handleDelete(item)}>
                         <MdOutlineDeleteOutline className="bg-[#07332F] w-8 h-8 p-1 rounded-sm text-white" />
-                      </span> */}
-                    </td>
-                    <td className="bg-gray text-black">
-                      {/* <Link to="/dashboard/payments">
-                        <button
-                          className="btn text-white"
-                          style={{ backgroundColor: "#07332F" }}
-                        >
-                          Pay
-                        </button>
-                      </Link> */}
+                      </span>
                     </td>
                   </tr>
                 ))}

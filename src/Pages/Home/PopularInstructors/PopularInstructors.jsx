@@ -7,7 +7,7 @@ const PopularInstructors = () => {
     const topInstructors = instructors.slice(0, 6)
     console.log(topInstructors)
     useEffect(()=>{
-        fetch("http://localhost:4000/instructors").then(res=>res.json()).then(data=>setInstructors(data))
+        fetch("https://summer-camp-school-server-side.vercel.app/instructors").then(res=>res.json()).then(data=>setInstructors(data))
     },[])
     return (
         <Container>

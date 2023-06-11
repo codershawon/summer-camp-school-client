@@ -5,7 +5,7 @@ import Container from "../Shared/Container";
 const Instructors = () => {
   const [allInstructors, setAllInstructors] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/instructors")
+    fetch("https://summer-camp-school-server-side.vercel.app/instructors")
       .then((res) => res.json())
       .then((data) => setAllInstructors(data));
   }, []);

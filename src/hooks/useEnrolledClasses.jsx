@@ -1,15 +1,26 @@
-import React from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from "react-query";
+import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useEnrolledClasses = () => {
-    const{data:enrolledClasses=[], isLoading:loading,refetch}=useQuery({
-        queryKey:["enrolledClasses"],
-        queryFn:async()=>{
-          const res= await fetch("http://localhost:4000/enrolledClasses")
-          return res.json()
-        }
-      })
-      return[enrolledClasses,loading,refetch]
+  const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure("http://localhost:4000");
+  const { isLoading, refetch, data: enrolledClasses = [] } = useQuery(
+    ["enrolledClasses", user?.email],
+    async () => {
+      if (user?.email) {
+        const response = await axiosSecure.get(`/payments?email=${user.email}`);
+        const paymentData = response.data;
+        const filteredData = paymentData.filter(payment => payment.email === user.email);
+        return filteredData;
+      }
+      return [];
+    }
+  );
+
+  return [enrolledClasses, refetch, isLoading];
 };
 
 export default useEnrolledClasses;
+
+

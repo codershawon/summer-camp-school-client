@@ -10,19 +10,20 @@ const SocialLogin = () => {
     const from=location.state?.from?.pathname || "/"
    const handleGoogleSignIn=()=>{
     signInWithGoogle().then(result=>{
-        const user=result.user
-        if(user){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Sign in with google successful!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              navigate(from,{replace:true})
-        }
-    }).catch(error=>console.log(error))
-   }
+        const loggedUser=result.user
+        const saveUser={name:loggedUser.displayName,email:loggedUser.email}
+        fetch("https://summer-camp-school-server-side.vercel.app/user",{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(saveUser)
+        }).then(res=>res.json()).then(()=>{
+              navigate(from, { replace: true })
+        })
+       
+      })
+    }
     return (
         <button
         onClick={handleGoogleSignIn}
@@ -34,3 +35,11 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
+// const handleGoogleSignIn = () => {
+//   signInWithGoogle().then((result) => {
+//     const loggedUser = result.user;
+//     console.log(loggedUser);
+//         const saveUser={name:loggedUser.displayName,email:loggedUser.email}
+       
+// }

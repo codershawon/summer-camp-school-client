@@ -65,7 +65,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
                 <li className="list-item">
-                  <NavLink to="/dashboard/myClasses">
+                  <NavLink to="/dashboard/myClass">
                     <AiFillHome /> My Classes
                   </NavLink>
                 </li>
@@ -98,6 +98,11 @@ const Dashboard = () => {
                 <li className="list-item">
                   <NavLink to="/dashboard/enrolledClasses">
                     <MdOutlineClass /> Enrolled Classes
+                  </NavLink>
+                </li>
+                <li className="list-item">
+                  <NavLink to="/dashboard/paymentHistory">
+                    <MdOutlineClass /> Payment History
                   </NavLink>
                 </li>
               </>

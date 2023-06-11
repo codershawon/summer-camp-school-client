@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import "./CheckoutForm.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 const CheckoutForm = ({ bookedClass, price }) => {
+  // const { navigate } = useNavigate();
   const stripe = useStripe();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -23,28 +25,33 @@ const CheckoutForm = ({ bookedClass, price }) => {
       });
     }
   }, [price]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) {
       return;
     }
+
     const card = elements.getElement(CardElement);
     if (card === null) {
       return;
     }
+
     console.log("card", card);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
+
     if (error) {
       console.log("error", error);
       setCardError(error.message);
     } else {
       console.log("paymentMethod", paymentMethod);
     }
+
     setProcessing(true);
-    // console.log(clientSecret)
+
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -55,42 +62,50 @@ const CheckoutForm = ({ bookedClass, price }) => {
           },
         },
       });
+
     // Handle result.error or result.paymentIntent
     if (confirmError) {
       console.log(confirmError);
+      // Handle the error here, e.g., show an error message to the user
+      setCardError(confirmError.message);
     }
+
     console.log(paymentIntent);
     setProcessing(false);
-    if (paymentIntent.status === "succeeded") {
+
+    if (paymentIntent && paymentIntent.status === "succeeded") {
       setTransactionID(paymentIntent.id);
       const payment = {
+        classId: bookedClass[0].classId,
+        image:bookedClass[0].image,
+        instructorName:bookedClass[0].instructorName,
+        id: bookedClass[0]._id,
+        numberOfStudents:bookedClass[0].numberOfStudents,
         email: user?.email,
-        transactionID: paymentIntent.id,
-        price,
-        date: new Date(),
-        totalClass: bookedClass.length,
-        selectedClass: bookedClass.map((item) => item._id),
-        classes: bookedClass.map((item) => item.classId),
+        transactionId: paymentIntent.id,
+        enrollmentDate: new Date(),
+        enrollmentTime:new Date().toLocaleTimeString(),
+        price: bookedClass[0].price,
         status: "service pending",
-        className: bookedClass.map((item) => item.name),
-        availableSeats:bookedClass.map((item) => ({
-            availableSeats: item.availableSeats - 1,
-          })),
+        className: bookedClass[0].name,
       };
+
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your payment for booking class successful',
-                showConfirmButton: false,
-                timer: 1500
-              })
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your payment for booking class successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
+      // navigate("/dashboard/enrolledClasses");
     }
   };
+
   return (
     <div>
       <h1
@@ -140,3 +155,4 @@ const CheckoutForm = ({ bookedClass, price }) => {
 };
 
 export default CheckoutForm;
+

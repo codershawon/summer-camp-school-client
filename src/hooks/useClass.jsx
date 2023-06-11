@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 const useClass = () => {
     const {user}=useAuth()
     console.log(user)
-    const [axiosSecure]=useAxiosSecure("http://localhost:4000")
+    const [axiosSecure]=useAxiosSecure("https://summer-camp-school-server-side.vercel.app")
     const {isLoading,
         refetch,
         data: bookedClass = [],
