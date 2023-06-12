@@ -2,8 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../components/SectionTitle";
+import useAuth from "../../../hooks/useAuth";
 
 const AddClass = () => {
+  const {user}=useAuth()
   const {
     register,
     handleSubmit,
@@ -89,6 +91,8 @@ const AddClass = () => {
             name="instructorName"
             id=""
             placeholder="Enter Instructor Name"
+            defaultValue={user?.displayName}
+            readOnly
             {...register("instructorName", { required: true })}
           />
           <div>
@@ -105,6 +109,8 @@ const AddClass = () => {
             name="email"
             id=""
             placeholder="Enter Instructor Email"
+            defaultValue={user?.email}
+            readOnly 
             {...register("email", {
               required: true,
             })}

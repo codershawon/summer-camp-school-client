@@ -12,7 +12,7 @@ const MyClass = () => {
   return (
     <div className="mb-10">
       <SectionTitle heading="MY CLASS" />
-      <h1 className='text-xl font-bold'>Total Enrolled Students: {}</h1>
+      <h1 className='text-xl font-bold'>Total Enrolled Students: {instructor.length}</h1>
       <div className="bg-gray-100  p-10 rounded-lg">
         <table className="table w-[920px] mx-auto mt-4 text-white rounded-lg">
           {/* head */}
