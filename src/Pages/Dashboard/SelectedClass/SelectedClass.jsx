@@ -4,8 +4,8 @@ import Container from "../../Shared/Container";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { MdOutlineDeleteOutline } from "react-icons/md";
-import "./SelectedClass.css";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../components/SectionTitle";
 const SelectedClass = () => {
   const [bookedClass, refetch] = useClass();
   const total = bookedClass.reduce((sum, item) => item.price + sum, 0);
@@ -39,12 +39,7 @@ const SelectedClass = () => {
         <Helmet>
           <title>Summer Camp School || Selected Classes</title>
         </Helmet>
-        <h1
-          id="classes"
-          className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-        >
-          Selected Classes
-        </h1>
+        <SectionTitle  heading="SELECTED CLASSES" />
         <div className="bg-gray-100 w-[990px] p-10 rounded-lg">
           <div className="flex justify-between">
             <h2 className="text-2xl font-bold uppercase">
@@ -75,8 +70,8 @@ const SelectedClass = () => {
                 {bookedClass.map((item, index) => (
                   <tr key={item._id}>
                     <th className="bg-gray text-black">{index + 1}</th>
-                    <td className="w-20 h-20 rounded-lg bg-gray">
-                      <img src={item.image} alt="" />
+                    <td>
+                      <img className="w-20 h-20 rounded-lg bg-gray" src={item.image} alt="" />
                     </td>
                     <td className="bg-gray text-black">{item.name}</td>
                     <td className="bg-gray text-black">

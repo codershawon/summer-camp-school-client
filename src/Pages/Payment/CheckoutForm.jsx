@@ -1,19 +1,21 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useAuth from "../../hooks/useAuth";
 import "./CheckoutForm.css";
 // import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import { AuthContext } from "../../Providers/AuthProviders";
+import useAuth from "../../hooks/useAuth";
 
 const CheckoutForm = ({ bookedClass, price }) => {
   // const { navigate } = useNavigate();
   const stripe = useStripe();
+  const {user}=useAuth()
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const { user } = useAuth();
+ 
   const elements = useElements();
-  const [axiosSecure] = useAxiosSecure("http://localhost:4000");
+  const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
 

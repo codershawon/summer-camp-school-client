@@ -14,13 +14,16 @@ import Classes from "./Pages/Classes/Classes";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Dashboard from "./Layout/Dashboard";
 import SelectedClass from "./Pages/Dashboard/SelectedClass/SelectedClass";
-import Payment from "./Pages/Payment/Payment";
-import EnrolledClasses from "./Pages/Enrolled Classes/EnrolledClasses";
 import ManageUsers from "./Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./Routes/AdminRoute";
 import AddClass from "./Pages/Dashboard/AddClass/AddClass";
 import MyClass from "./Pages/Dashboard/MyClass/MyClass";
 import PaymentHistory from "./Pages/Dashboard/PaymentHistory/PaymentHistory";
+import Payment from "./Pages/Payment/Payment";
+import EnrolledClasses from "./Pages/Dashboard/Enrolled Classes/EnrolledClasses";
+import ManageClasses from "./Pages/Dashboard/ManageClasses/ManageClasses";
+import PrivateRoutes from "./Routes/PrivateRoutes";
+import InstructorRoute from "./Routes/InstructorRoute";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children: [
       //student routes
       {
@@ -61,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: "payments",
-        element: <Payment></Payment>,
+        element: <Payment></Payment>
       },
       {
         path: "enrolledClasses",
@@ -75,11 +78,11 @@ const router = createBrowserRouter([
       //instructor routes
       {
         path: "addClass",
-        element: <AddClass></AddClass>,
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>,
       },
       {
         path: "myClass",
-        element: <MyClass></MyClass>,
+        element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
       },
 
       //admin routes
@@ -88,6 +91,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageClasses",
+        element: (
+          <AdminRoute>
+            <ManageClasses></ManageClasses>
           </AdminRoute>
         ),
       },

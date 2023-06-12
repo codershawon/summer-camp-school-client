@@ -1,10 +1,10 @@
 import React from 'react';
-import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from 'react-query';
+import useAuth from './useAuth';
 
 const useInstructor = () => {
-    const{user,loading}=useAuth()
+  const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
     const { data: isInstructor,isInstructorLoading } = useQuery(["isInstructor", user?.email], async () => {
       const response = await axiosSecure.get(`/user/instructor/${user?.email}`);
@@ -18,3 +18,7 @@ const useInstructor = () => {
 };
 
 export default useInstructor;
+
+
+
+

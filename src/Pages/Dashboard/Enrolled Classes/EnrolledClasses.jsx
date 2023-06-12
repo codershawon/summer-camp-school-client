@@ -1,5 +1,5 @@
 import React from 'react';
-import useEnrolledClasses from '../../hooks/useEnrolledClasses';
+import useEnrolledClasses from '../../../hooks/useEnrolledClasses';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import Swal from 'sweetalert2';
 
@@ -18,7 +18,7 @@ const EnrolledClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/payments/${item._id}`, {
+        fetch(`https://summer-camp-school-server-side.vercel.app/payments/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -54,8 +54,8 @@ const EnrolledClasses = () => {
                 {enrolledClasses.map((item, index) => (
                   <tr key={item._id}>
                     <th className="bg-gray text-black">{index + 1}</th>
-                    <td className="w-20 h-20 rounded-lg bg-gray">
-                      <img src={item.image} alt="" />
+                    <td>
+                      <img className="w-20 h-20 rounded-lg bg-gray" src={item.image} alt="" />
                     </td>
                     <td className="bg-gray text-black">{item.className}</td>
                     <td className="bg-gray text-black">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Instructor from "./instructor";
-import "./Instructors.css"
 import Container from "../Shared/Container";
+import SectionTitle from "../../components/SectionTitle";
 const Instructors = () => {
   const [allInstructors, setAllInstructors] = useState([]);
   useEffect(() => {
@@ -11,7 +11,7 @@ const Instructors = () => {
   }, []);
   return <Container>
     <div>
-    <h1 id="instructor" className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20">About Instructor</h1>
+    <SectionTitle  heading="ABOUT INSTRUCTOR" />
     <div className="grid grid-cols-3 gap-6">
     {
         allInstructors.map(instructor=><Instructor key={instructor._id} instructor={instructor}></Instructor>)

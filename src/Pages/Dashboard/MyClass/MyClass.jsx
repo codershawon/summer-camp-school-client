@@ -2,23 +2,16 @@ import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import DisplayClass from './DisplayClass';
+import useInstructor from '../../../hooks/useInstructor';
+import SectionTitle from '../../../components/SectionTitle';
 
 const MyClass = () => {
-    const[axiosSecure]=useAxiosSecure("https://summer-camp-school-server-side.vercel.app")
-    const {data:classes=[],refetch}=useQuery(["classes"],async()=>{
-        const res= await axiosSecure.get(`/classes`)
-        return res.data
-    })
-    console.log(classes)
+    const[instructorData]=useInstructor()
+    console.log(instructorData)
 
     return (
       <div className="mb-10">
-        <h1
-          id="classes"
-          className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-        >
-          My Classes
-        </h1>
+        <SectionTitle heading="MY CLASS" />
           <h1>Total Enrolled Students: 0</h1>
           <table className="table w-[920px] mx-auto mt-4 text-white rounded-lg">
             {/* head */}
@@ -37,9 +30,9 @@ const MyClass = () => {
               </tr>
             </thead>
             <tbody>
-            {classes.map((item,index) => (
+            {/* {instructorClasses.map((item,index) => (
               <DisplayClass key={item._id} item={item} index={index}></DisplayClass>
-            ))}
+            ))} */}
             </tbody>
           </table>
         </div>

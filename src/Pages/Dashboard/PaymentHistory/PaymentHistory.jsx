@@ -3,6 +3,7 @@ import useEnrolledClasses from "../../../hooks/useEnrolledClasses";
 import useAuth from "../../../hooks/useAuth";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../components/SectionTitle";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -18,7 +19,7 @@ const PaymentHistory = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/payments/${item._id}`, {
+        fetch(`https://summer-camp-school-server-side.vercel.app/payments/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -37,12 +38,7 @@ const PaymentHistory = () => {
   
   return (
     <div>
-      <h1
-        id="classes"
-        className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-      >
-        Enrolled Classes
-      </h1>
+       <SectionTitle  heading="ENROLLED CLASSES" />
       <table className="table w-[920px] mx-auto mt-4 text-white">
         {/* head */}
         <thead>

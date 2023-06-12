@@ -1,7 +1,7 @@
 import React from "react";
-import "./AddClass.css";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../components/SectionTitle";
 
 const AddClass = () => {
   const {
@@ -13,7 +13,7 @@ const AddClass = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const { name, instructorName, email, availableSeats, price, image } = data;
+    const { name, instructorName, email, availableSeats, price, image,status } = data;
     const newClass = {
       name,
       instructorName,
@@ -21,6 +21,7 @@ const AddClass = () => {
       availableSeats,
       price: parseFloat(price),
       image,
+      status: "Pending"
     };
     console.log(newClass);
     
@@ -50,12 +51,7 @@ const AddClass = () => {
 
   return (
     <div>
-      <h1
-        id="classes"
-        className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-      >
-        Add a Class
-      </h1>
+       <SectionTitle heading="ADD CLASS" />
      
       <form onSubmit={handleSubmit(onSubmit)}>
       <div className="bg-gray-300 w-[600px] p-10 rounded-lg mx-auto">

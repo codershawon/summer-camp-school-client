@@ -1,17 +1,12 @@
 import React from "react";
-import "./Classes.css";
 import useClasses from "../../hooks/useClasses";
-import Class from "./Class";
+import SectionTitle from "../../components/SectionTitle";
 const Classes = () => {
   const [classes] = useClasses();
   return (
     <div className="mb-10">
-      <h1
-        id="classes"
-        className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-      >
-        Approved Classes
-      </h1>
+
+        <SectionTitle heading="APPROVED CLASS" />
 
         <table className="table w-[920px] mx-auto mt-4 text-white">
           {/* head */}

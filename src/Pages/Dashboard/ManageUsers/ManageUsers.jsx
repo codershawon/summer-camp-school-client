@@ -5,6 +5,7 @@ import { FaUserShield } from 'react-icons/fa'
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import { GiTeacher } from 'react-icons/gi';
 import Swal from 'sweetalert2';
+import SectionTitle from '../../../components/SectionTitle';
 const ManageUsers = () => {
     const[axiosSecure]=useAxiosSecure("https://summer-camp-school-server-side.vercel.app")
     const {data:user=[],refetch}=useQuery(["user"],async()=>{
@@ -77,12 +78,7 @@ const ManageUsers = () => {
       };
     return (
         <div>
-            <h1
-          id="classes"
-          className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-        >
-          Selected Classes
-        </h1>
+                <SectionTitle  heading="MANAGE USERS" />
            <div className="bg-gray-100 w-[990px] p-10 rounded-lg">
            <div className="overflow-x-auto">
             <table className="table w-[920px] mx-auto mt-4 text-white">
