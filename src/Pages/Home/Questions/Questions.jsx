@@ -9,8 +9,8 @@ const Questions = () => {
     <Container>
       <div>
         <SectionTitle heading="FREQUENTLY ASKED QUESTIONS" />
-        <Tabs>
-          <TabList className="btn-group btn-group-vertical lg:btn-group-horizontal text-white ml-60">
+        <Tabs className='mb-10'>
+          <TabList className="btn-group btn-group-vertical lg:btn-group-horizontal text-white ml-60 ">
             <Tab className="btn  w-96" style={{ backgroundColor: "#07332F" }}>
               General Information
             </Tab>

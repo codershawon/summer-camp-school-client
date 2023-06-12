@@ -1,6 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-import "./CheckoutForm.css";
 // import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -110,12 +109,6 @@ const CheckoutForm = ({ bookedClass, price }) => {
 
   return (
     <div>
-      <h1
-        id="checkout"
-        className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20"
-      >
-        Payment
-      </h1>
       <form
         onSubmit={handleSubmit}
         className="w-[800px] mx-auto bg-gray-300 p-10 rounded-lg"

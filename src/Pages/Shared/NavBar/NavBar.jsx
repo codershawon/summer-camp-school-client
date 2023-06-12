@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from '../Container';
 import useAuth from '../../../hooks/useAuth';
 import { Link, NavLink } from 'react-router-dom';

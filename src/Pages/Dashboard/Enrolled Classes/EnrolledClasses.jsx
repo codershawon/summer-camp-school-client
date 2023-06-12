@@ -2,6 +2,7 @@ import React from 'react';
 import useEnrolledClasses from '../../../hooks/useEnrolledClasses';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import SectionTitle from '../../../components/SectionTitle';
 
 
 const EnrolledClasses = () => {
@@ -34,9 +35,9 @@ const EnrolledClasses = () => {
   
     return (
         <div>
-            <h1 id="classes"
-          className="text-center text-4xl font-bold mx-auto uppercase mb-10 mt-20">Enrolled Classes</h1>
-            <table className="table w-[920px] mx-auto mt-4 text-white">
+             <SectionTitle  heading="ENROLLED CLASS" />
+           <div className="bg-gray-100  p-10 rounded-lg">
+           <table className="table w-[920px] mx-auto mt-4 text-white">
               {/* head */}
               <thead>
                 <tr className="text-white uppercase">
@@ -74,6 +75,7 @@ const EnrolledClasses = () => {
                 ))}
               </tbody>
             </table>
+           </div>
         </div>
     );
 };

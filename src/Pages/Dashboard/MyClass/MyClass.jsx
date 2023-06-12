@@ -13,6 +13,7 @@ const MyClass = () => {
       <div className="mb-10">
         <SectionTitle heading="MY CLASS" />
           <h1>Total Enrolled Students: 0</h1>
+          <div className="bg-gray-100  p-10 rounded-lg">
           <table className="table w-[920px] mx-auto mt-4 text-white rounded-lg">
             {/* head */}
             <thead>
@@ -35,7 +36,8 @@ const MyClass = () => {
             ))} */}
             </tbody>
           </table>
-        </div>
+          </div>
+          </div>
     );
 };
 
