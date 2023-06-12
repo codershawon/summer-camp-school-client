@@ -3,13 +3,14 @@ import SectionTitle from "../../components/SectionTitle";
 import Class from "./Class";
 import useClasses from "../../hooks/useClasses";
 const Classes = () => {
- const [classes]=useClasses()
- console.log(classes)
+  const [classes] = useClasses();
+  console.log(classes);
+  const approvedClasses = classes.filter((item) => item.status === "Approved");
+
   return (
     <div className="mb-10">
-
-        <SectionTitle heading="APPROVED CLASS" />
-
+      <SectionTitle heading="APPROVED CLASS" />
+      <div className="bg-gray-100  p-10 rounded-lg w-[1200px] mx-auto">
         <table className="table w-[920px] mx-auto mt-4 text-white">
           {/* head */}
           <thead>
@@ -24,12 +25,13 @@ const Classes = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {classes.map((item,index) => (
+            {approvedClasses.map((item, index) => (
               <Class key={item._id} item={item} index={index}></Class>
             ))}
           </tbody>
         </table>
       </div>
+    </div>
   );
 };
 
