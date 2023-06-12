@@ -38,7 +38,7 @@ const PaymentHistory = () => {
   
   return (
     <div>
-       <SectionTitle  heading="ENROLLED CLASSES" />
+       <SectionTitle  heading="PAYMENT HISTORY" />
        <div className="bg-gray-100  p-10 rounded-lg">
       <table className="table w-[920px] mx-auto mt-4 text-white">
         {/* head */}

@@ -1,10 +1,10 @@
 import React from "react";
-import useClasses from "../../hooks/useClasses";
 import SectionTitle from "../../components/SectionTitle";
 import Class from "./Class";
-import useClass from "../../hooks/useClass";
+import useClasses from "../../hooks/useClasses";
 const Classes = () => {
- const [classes]=useClass()
+ const [classes]=useClasses()
+ console.log(classes)
   return (
     <div className="mb-10">
 

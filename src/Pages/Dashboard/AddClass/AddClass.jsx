@@ -13,7 +13,7 @@ const AddClass = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const { name, instructorName, email, availableSeats, price, image,status } = data;
+    const { name, instructorName, email, availableSeats, price, image,status} = data;
     const newClass = {
       name,
       instructorName,

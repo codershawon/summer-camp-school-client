@@ -1,41 +1,59 @@
-import React, { useState } from "react";
-import useClasses from "../../../hooks/useClasses";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle";
+import Swal from "sweetalert2";
+import useClasses from "../../../hooks/useClasses";
 
 const ManageClasses = () => {
   const [classes] = useClasses();
   console.log(classes);
-  const [updatedClasses, setUpdatedClasses] = useState(classes);
+  const [updatedClasses, setUpdatedClasses] = useState([]);
+  
+
+  useEffect(() => {
+    setUpdatedClasses(classes);
+  }, [classes]);
   console.log(updatedClasses);
-  const handleStatusChange = (id, newStatus) => {
-    // Update the status in the UI
-    setUpdatedClasses((prevClasses) => {
-      return prevClasses.map((item) => {
-        if (item._id === id) {
-          return { ...item, status: newStatus, isDisabled: true };
-        }
-        return item;
-      });
-    });
-    console.log("ID:", id);
-    console.log("New Status:", newStatus);
-
+  const handleStatusChange = (_id, status) => {
+    console.log(_id, status);
+    const newStatus = { status };
+    console.log(newStatus);
+    
     // Update the status in the database
-    fetch(`https://summer-camp-school-server-side.vercel.app/classes/${id}`, {
-      method: "PUT",
+    fetch(`https://summer-camp-school-server-side.vercel.app/classes/${_id}`, {
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ status: newStatus }),
+      body: JSON.stringify(newStatus)
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data); // Handle the response or do something with the data if needed
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Failed to update class status.");
+        }
       })
-      .catch((error) => console.log(error));
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed to update class status.",
+        });
+      });
   };
-
+  
   return (
     <div>
      <SectionTitle  heading="MANAGE CLASS" />
@@ -78,14 +96,14 @@ const ManageClasses = () => {
                     <div className="btn-group btn-group-vertical">
                       <button
                         className="btn"
-                        disabled={item.isDisabled || item.status === "Approved"}
+                        disabled={item.status==="Approved" || item.status === "Denied"}
                         onClick={() => handleStatusChange(item._id, "Approved")}
                       >
                         Approved
                       </button>
                       <button
                         className="btn"
-                        disabled={item.isDisabled || item.status === "Denied"}
+                        disabled={item.status==="Approved"|| item.status === "Denied"}
                         onClick={() => handleStatusChange(item._id, "Denied")}
                       >
                         Denied

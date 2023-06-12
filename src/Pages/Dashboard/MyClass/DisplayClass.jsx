@@ -1,12 +1,12 @@
 import React from "react";
 
 const DisplayClass = ({ item,index }) => {
-  const { _id, image, name,email, availableSeats, price, instructorName } = item;
+  const { _id, image, name,email, availableSeats, price, instructorName,status } = item;
   return (
     <tr>
       <th className="bg-white text-black">{index}</th>
-      <td className="w-12 h-12 rounded-lg bg-white">
-        <img src={image} alt="" />
+      <td >
+        <img className="w-12 h-12 rounded-lg" src={image} alt="" />
       </td>
       <td className="bg-white text-black">{name}</td>
       <td className="bg-white text-black">{instructorName}</td>
@@ -15,9 +15,7 @@ const DisplayClass = ({ item,index }) => {
       <td className="bg-white text-black">${price}</td>
       <td className="bg-white text-black">
         <div className="btn-group btn-group-vertical lg:btn-group-horizontal">
-          <button className="btn btn-active">Pending</button>
-          <button className="btn">Approved</button>
-          <button className="btn">Denied</button>
+         {status}
         </div>
       </td>
       <td className="bg-white text-black">
