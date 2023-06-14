@@ -12,7 +12,7 @@ const SocialLogin = () => {
     signInWithGoogle().then(result=>{
         const loggedUser=result.user
         const saveUser={name:loggedUser.displayName,email:loggedUser.email}
-        fetch("https://summer-camp-school-server-side.vercel.app/user",{
+        fetch("http://localhost:4000/user",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"

@@ -7,7 +7,7 @@ const PopularClasses = () => {
     const topClasses = classes.slice(0, 6)
     console.log(topClasses)
     useEffect(()=>{
-        fetch("https://summer-camp-school-server-side.vercel.app/classes").then(res=>res.json()).then(data=>setClasses(data))
+        fetch("http://localhost:4000/classes").then(res=>res.json()).then(data=>setClasses(data))
     },[])
     return (
         <Container>

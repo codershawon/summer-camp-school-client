@@ -19,7 +19,7 @@ const PaymentHistory = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-school-server-side.vercel.app/payments/${item._id}`, {
+        fetch(`http://localhost:4000/payments/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -33,7 +33,7 @@ const PaymentHistory = () => {
     });
   };
   const sortedClasses = enrolledClasses.sort((a, b) =>
-  new Date(b.enrollmentTime) - new Date(a.enrollmentTime)
+  new Date(a.enrollmentTime) - new Date(b.enrollmentTime)
 );
   
   return (

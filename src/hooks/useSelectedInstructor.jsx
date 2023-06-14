@@ -5,7 +5,7 @@ import useAuth from './useAuth';
 
 const useSelectedInstructor = () => {
     const { user } = useAuth();
-    const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
+    const [axiosSecure] = useAxiosSecure("http://localhost:4000");
     const { isLoading, refetch, data: instructor = [] } = useQuery(
         ["instructor", user?.email],
         async () => {

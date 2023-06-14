@@ -12,7 +12,7 @@ const Class = ({ item, index }) => {
     const handleSelectClass = (item) => {
     if(user && user.email){
       const selectedClass={classId:_id,image, name,instructorName,price,numberOfStudents, availableSeats,email:user.email }
-      fetch("https://summer-camp-school-server-side.vercel.app/bookedClass", {
+      fetch("http://localhost:4000/bookedClass", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

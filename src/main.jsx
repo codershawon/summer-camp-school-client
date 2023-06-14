@@ -24,6 +24,7 @@ import EnrolledClasses from "./Pages/Dashboard/Enrolled Classes/EnrolledClasses"
 import ManageClasses from "./Pages/Dashboard/ManageClasses/ManageClasses";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import InstructorRoute from "./Routes/InstructorRoute";
+import UpdateClass from "./Pages/Dashboard/UpdateClass/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element:<Dashboard></Dashboard>,
+    element: <Dashboard></Dashboard>,
     children: [
       //student routes
       {
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
       },
       {
         path: "payments",
-        element: <Payment></Payment>
+        element: <Payment></Payment>,
       },
       {
         path: "enrolledClasses",
@@ -78,11 +79,27 @@ const router = createBrowserRouter([
       //instructor routes
       {
         path: "addClass",
-        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "updateClass/:id",
+        element: (
+          <InstructorRoute>
+            <UpdateClass></UpdateClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "myClass",
-        element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <MyClass></MyClass>
+          </InstructorRoute>
+        ),
       },
 
       //admin routes
@@ -102,8 +119,6 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-
-      
     ],
   },
 ]);
@@ -112,9 +127,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProviders>
       <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </QueryClientProvider>
       </HelmetProvider>
     </AuthProviders>
   </React.StrictMode>

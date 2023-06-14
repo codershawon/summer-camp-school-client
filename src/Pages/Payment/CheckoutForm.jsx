@@ -9,12 +9,15 @@ import useAuth from "../../hooks/useAuth";
 const CheckoutForm = ({ bookedClass, price }) => {
   // const { navigate } = useNavigate();
   const stripe = useStripe();
-  const {user}=useAuth()
+  console.log(stripe);
+  const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
- 
+
   const elements = useElements();
-  const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
+  const [axiosSecure] = useAxiosSecure(
+    "http://localhost:4000"
+  );
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
 
@@ -78,14 +81,14 @@ const CheckoutForm = ({ bookedClass, price }) => {
       setTransactionID(paymentIntent.id);
       const payment = {
         classId: bookedClass[0].classId,
-        image:bookedClass[0].image,
-        instructorName:bookedClass[0].instructorName,
+        image: bookedClass[0].image,
+        instructorName: bookedClass[0].instructorName,
         id: bookedClass[0]._id,
-        numberOfStudents:bookedClass[0].numberOfStudents,
+        numberOfStudents: bookedClass[0].numberOfStudents,
         email: user?.email,
         transactionId: paymentIntent.id,
         enrollmentDate: new Date(),
-        enrollmentTime:new Date().toLocaleTimeString(),
+        enrollmentTime: new Date().toLocaleTimeString(),
         price: bookedClass[0].price,
         status: "service pending",
         className: bookedClass[0].name,
@@ -150,4 +153,3 @@ const CheckoutForm = ({ bookedClass, price }) => {
 };
 
 export default CheckoutForm;
-

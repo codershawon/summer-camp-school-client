@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const DisplayClass = ({ item, index }) => {
   const {
@@ -46,12 +47,12 @@ const DisplayClass = ({ item, index }) => {
         </button>
       </td>
       <td className="bg-white text-black">
-        <button
+        <Link to={`/dashboard/updateClass/${_id}`}><button
           className="btn mt-5 text-white"
           style={{ backgroundColor: "#07332F" }}
         >
           Update
-        </button>
+        </button></Link>
       </td>
       {isModalOpen && (
         <dialog

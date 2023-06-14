@@ -16,6 +16,7 @@ const useAxiosSecure = (baseURL) => {
     (response) => response,
     async (error) => {
       const { status } = error.response;
+      console.log(status)
       if (status === 401 || status === 403) {
         // Handle unauthorized or forbidden requests as needed
         // For example, you can log out the user and redirect to the login page
@@ -36,6 +37,7 @@ const useAxiosSecure = (baseURL) => {
   useEffect(() => {
     return () => {
       // Clean up the interceptors when the component unmounts
+      // axiosSecure.interceptors.request.eject();
       axiosSecure.interceptors.response.eject();
     };
   }, [navigate, axiosSecure]);

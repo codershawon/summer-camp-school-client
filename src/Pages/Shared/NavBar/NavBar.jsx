@@ -4,6 +4,7 @@ import useAuth from '../../../hooks/useAuth';
 import { Link, NavLink } from 'react-router-dom';
 import { BsFillBookmarkStarFill } from 'react-icons/bs'
 import useClass from '../../../hooks/useClass';
+// import { FaMoon, FaSun } from 'react-icons/fa';
 const NavBar = () => {
     const {user,logout}=useAuth()
     const [bookedClass]=useClass()
@@ -48,6 +49,10 @@ const NavBar = () => {
               <BsFillBookmarkStarFill className='text-white '/>
             </div>
           </li></Link>
+          {/* <li> <button onClick={toggleTheme}>
+        {theme === 'dark' ? <FaSun /> : <FaMoon />}
+      </button></li> */}
+
     </ul>
   </div>
   <div className="navbar-end">

@@ -7,7 +7,7 @@ const useClass = () => {
   const { user } = useAuth();
   console.log(user);
   const [axiosSecure] = useAxiosSecure(
-    "https://summer-camp-school-server-side.vercel.app"
+    "http://localhost:4000"
   );
   const {
     isLoading,

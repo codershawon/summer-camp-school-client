@@ -6,26 +6,31 @@ import useClasses from "../../../hooks/useClasses";
 
 const ManageClasses = () => {
   const [classes] = useClasses();
-  console.log(classes);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedClass, setSelectedClass] = useState(null);
   const [updatedClasses, setUpdatedClasses] = useState([]);
-  
 
   useEffect(() => {
-    setUpdatedClasses(classes);
+    setUpdatedClasses(
+      classes.map((item) => ({ ...item, feedbackProvided: false }))
+    );
   }, [classes]);
-  console.log(updatedClasses);
+
+  const handleFeedback = (classItem) => {
+    setSelectedClass(classItem);
+    setIsModalOpen(true);
+  };
+
   const handleStatusChange = (_id, status) => {
-    console.log(_id, status);
     const newStatus = { status };
-    console.log(newStatus);
-    
+
     // Update the status in the database
-    fetch(`https://summer-camp-school-server-side.vercel.app/classes/${_id}`, {
+    fetch(`http://localhost:4000/classes/${_id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newStatus)
+      body: JSON.stringify(newStatus),
     })
       .then((res) => {
         if (res.ok) {
@@ -36,12 +41,19 @@ const ManageClasses = () => {
       })
       .then((data) => {
         console.log(data);
+        // Update the status in the client-side
+        setUpdatedClasses((prevClasses) =>
+          prevClasses.map((item) =>
+            item._id === _id ? { ...item, status } : item
+          )
+        );
+
         Swal.fire({
           position: "top-end",
           icon: "success",
           title: "Your work has been saved",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       })
       .catch((error) => {
@@ -53,10 +65,60 @@ const ManageClasses = () => {
         });
       });
   };
-  
+
+  const handleFeedbackSend = (classItem, feedback) => {
+    const newStatus = {
+      status: classItem.status,
+      feedback,
+    };
+
+    // Update the feedback in the database
+    fetch(`http://localhost:4000/classes/${classItem._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newStatus),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Failed to update feedback.");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        // Update the feedback and set feedbackProvided to true
+        setUpdatedClasses((prevClasses) =>
+          prevClasses.map((item) =>
+            item._id === classItem._id
+              ? { ...item, feedbackProvided: true }
+              : item
+          )
+        );
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your feedback has been sent",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed to update feedback.",
+        });
+      });
+  };
+
   return (
     <div>
-     <SectionTitle  heading="MANAGE CLASS" />
+      <SectionTitle heading="MANAGE CLASS" />
       <div className="bg-gray-100  p-10 rounded-lg">
         <div className="overflow-x-auto">
           <table className="table w-[920px] mx-auto mt-4 text-white">
@@ -94,21 +156,30 @@ const ManageClasses = () => {
                   <td className="bg-gray text-black">{item.status}</td>
                   <td className="bg-gray text-black">
                     <div className="btn-group btn-group-vertical">
-                      <button
-                        className="btn"
-                        disabled={item.status==="Approved" || item.status === "Denied"}
-                        onClick={() => handleStatusChange(item._id, "Approved")}
-                      >
-                        Approved
-                      </button>
-                      <button
-                        className="btn"
-                        disabled={item.status==="Approved"|| item.status === "Denied"}
-                        onClick={() => handleStatusChange(item._id, "Denied")}
-                      >
-                        Denied
-                      </button>
-                      <button className="btn">Feedback</button>
+                      {item.status !== "Approved" && item.status !== "Denied" && (
+                        <button
+                          className="btn"
+                          onClick={() => handleStatusChange(item._id, "Approved")}
+                        >
+                          Approved
+                        </button>
+                      )}
+                      {item.status !== "Approved" && item.status !== "Denied" && (
+                        <button
+                          className="btn"
+                          onClick={() => handleStatusChange(item._id, "Denied")}
+                        >
+                          Denied
+                        </button>
+                      )}
+                      {!item.feedbackProvided && (
+                        <button
+                          className="btn"
+                          onClick={() => handleFeedback(item)}
+                        >
+                          Feedback
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -117,8 +188,53 @@ const ManageClasses = () => {
           </table>
         </div>
       </div>
+      {isModalOpen && selectedClass && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle bg-transparent"
+          open
+        >
+          <form
+            method="dialog"
+            className="modal-box bg-white"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const feedbackInput = e.target.elements["feedback-input"];
+              const feedback = feedbackInput.value;
+              handleFeedbackSend(selectedClass, feedback);
+              setIsModalOpen(false);
+            }}
+          >
+            <div className="modal-content">
+              <label htmlFor="feedback-input" className="block mb-2">
+                Feedback:
+              </label>
+              <textarea
+                id="feedback-input"
+                className="w-full rounded-md border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-300 text-black"
+                rows={4}
+                required
+              ></textarea>
+            </div>
+            <div className="modal-actions flex gap-3">
+              <button type="submit" className="btn">
+                Submit
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </dialog>
+      )}
     </div>
   );
 };
 
 export default ManageClasses;
+
+
