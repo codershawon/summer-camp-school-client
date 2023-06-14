@@ -5,7 +5,7 @@ import useAuth from './useAuth';
 
 const useInstructor = () => {
   const { user, loading } = useAuth();
-    const [axiosSecure] = useAxiosSecure("http://localhost:4000");
+    const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
     const { data: isInstructor,isInstructorLoading } = useQuery(["isInstructor", user?.email], async () => {
       const response = await axiosSecure.get(`/user/instructor/${user?.email}`);
       console.log("is instructor response", response);

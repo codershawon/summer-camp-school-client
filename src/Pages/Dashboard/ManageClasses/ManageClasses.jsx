@@ -25,7 +25,7 @@ const ManageClasses = () => {
     const newStatus = { status };
 
     // Update the status in the database
-    fetch(`http://localhost:4000/classes/${_id}`, {
+    fetch(`https://summer-camp-school-server-side.vercel.app/classes/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const ManageClasses = () => {
     };
 
     // Update the feedback in the database
-    fetch(`http://localhost:4000/classes/${classItem._id}`, {
+    fetch(`https://summer-camp-school-server-side.vercel.app/classes/${classItem._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

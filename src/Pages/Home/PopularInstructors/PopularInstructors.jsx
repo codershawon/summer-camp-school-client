@@ -4,11 +4,11 @@ import SectionTitle from "../../../components/SectionTitle";
 import { useSpring, animated } from "@react-spring/web";
 const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
-  instructors.sort((a, b) => b.numberOfStudents - a.numberOfStudents);
+  instructors.sort((a, b) => b.numberOfSeats - a.numberOfSeats);
   const topInstructors = instructors.slice(0, 6);
   console.log(topInstructors);
   useEffect(() => {
-    fetch("http://localhost:4000/instructors")
+    fetch("https://summer-camp-school-server-side.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
@@ -29,7 +29,7 @@ const PopularInstructors = () => {
               <img
                 className="h-[600px] w-[570px] gap-2 mb-3 rounded-lg"
                 key={item._id}
-                src={item.image}
+                src={item.instructorImage}
                 alt=""
               />
             ))}

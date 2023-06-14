@@ -4,7 +4,7 @@ const Instructor = ({instructor}) => {
     const{image,instructorName,email}=instructor
     return (
         <div className="card w-[550px] h-[500px] bg-gray-300 shadow-xl">
-        <figure className="px-10 pt-10 h-96">
+        <figure className="px-10 pt-10 h-[500px] w-[500px]">
           <img src={image}  className="rounded-xl" />
         </figure>
         <div className="card-body items-left text-left">

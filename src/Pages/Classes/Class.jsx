@@ -7,12 +7,12 @@ const Class = ({ item, index }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const location=useLocation()
-  const{_id,image,name,availableSeats,price,numberOfStudents,instructorName}=item
+  const{_id,image,name,availableSeats,price,availableStudents,instructorName}=item
   const [loginPrompt,setLoginPrompt]=useState(false)
     const handleSelectClass = (item) => {
     if(user && user.email){
-      const selectedClass={classId:_id,image, name,instructorName,price,numberOfStudents, availableSeats,email:user.email }
-      fetch("http://localhost:4000/bookedClass", {
+      const selectedClass={classId:_id,image, name,instructorName,price,availableStudents, availableSeats,email:user?.email }
+      fetch("https://summer-camp-school-server-side.vercel.app/bookedClass", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,7 +21,6 @@ const Class = ({ item, index }) => {
       }) .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-        //   refetch() ///refetch card to update the number of items in the cart
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -30,6 +29,7 @@ const Class = ({ item, index }) => {
             timer: 1500,
           });
         }
+        refetch()///refetch card to update the number of items in the cart
       });
   }else {
   setLoginPrompt(true)
@@ -57,6 +57,7 @@ const Class = ({ item, index }) => {
       </td>
       <td className="bg-white text-black">{name}</td>
       <td className="bg-white text-black">{availableSeats}</td>
+      <td className="bg-white text-black">{availableStudents}</td>
       <td className="bg-white text-black">${price}</td>
       <td className="bg-white text-black">
         <Link>

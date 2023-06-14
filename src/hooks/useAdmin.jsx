@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 const useAdmin = () => {
     const { user, loading } = useAuth();
-    const [axiosSecure] = useAxiosSecure("http://localhost:4000");
+    const [axiosSecure] = useAxiosSecure("https://summer-camp-school-server-side.vercel.app");
     const { data: isAdmin,isAdminLoading } = useQuery(["isAdmin", user?.email], async () => {
       const response = await axiosSecure.get(`/user/admin/${user?.email}`);
       console.log("is admin response", response);

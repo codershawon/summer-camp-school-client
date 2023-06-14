@@ -1,13 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import { AuthContext } from "../../Providers/AuthProviders";
 import useAuth from "../../hooks/useAuth";
 
-const CheckoutForm = ({ bookedClass, price }) => {
-  // const { navigate } = useNavigate();
+const CheckoutForm = ({ bookedClass, price}) => {
   const stripe = useStripe();
   console.log(stripe);
   const { user } = useAuth();
@@ -16,7 +13,7 @@ const CheckoutForm = ({ bookedClass, price }) => {
 
   const elements = useElements();
   const [axiosSecure] = useAxiosSecure(
-    "http://localhost:4000"
+    "https://summer-camp-school-server-side.vercel.app"
   );
   const [processing, setProcessing] = useState(false);
   const [transactionID, setTransactionID] = useState("");
@@ -29,7 +26,7 @@ const CheckoutForm = ({ bookedClass, price }) => {
       });
     }
   }, [price]);
-
+console.log(clientSecret)
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) {
@@ -80,11 +77,10 @@ const CheckoutForm = ({ bookedClass, price }) => {
     if (paymentIntent && paymentIntent.status === "succeeded") {
       setTransactionID(paymentIntent.id);
       const payment = {
-        classId: bookedClass[0].classId,
         image: bookedClass[0].image,
         instructorName: bookedClass[0].instructorName,
         id: bookedClass[0]._id,
-        numberOfStudents: bookedClass[0].numberOfStudents,
+        availableStudents:parseFloat((bookedClass[0].availableStudents)),
         email: user?.email,
         transactionId: paymentIntent.id,
         enrollmentDate: new Date(),
@@ -92,8 +88,8 @@ const CheckoutForm = ({ bookedClass, price }) => {
         price: bookedClass[0].price,
         status: "service pending",
         className: bookedClass[0].name,
+        availableSeats:parseFloat(bookedClass[0].availableSeats)-1
       };
-
       axiosSecure.post("/payments", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

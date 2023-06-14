@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const DisplayClass = ({ item, index }) => {
+const DisplayClass = ({ item}) => {
   const {
     _id,
     image,
@@ -11,78 +11,88 @@ const DisplayClass = ({ item, index }) => {
     price,
     instructorName,
     status,
+    feedback,
   } = item;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleFeedback = () => {
-    // Open the modal
-    setIsModalOpen(true);
-  };
 
   return (
-    <tr>
-      <th className="bg-white text-black">{index}</th>
-      <td>
-        <img className="w-12 h-12 rounded-lg" src={image} alt="" />
-      </td>
-      <td className="bg-white text-black">{name}</td>
-      <td className="bg-white text-black">{instructorName}</td>
-      <td className="bg-white text-black">{email}</td>
-      <td className="bg-white text-black">{availableSeats}</td>
-      <td className="bg-white text-black">${price}</td>
-      <td className="bg-white text-black">
-        <div className="btn-group btn-group-vertical lg:btn-group-horizontal">
+    <div className="card card-side bg-gray-300 shadow-xl h-[400px] w-[1000px] flex items-center">
+      <figure className="px-10 pt-10 ">
+        {" "}
+        <img src={image} className=" h-[350px] w-[350px] rounded-lg mb-10" />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">
+          <h2 className="card-title">
+            <span className="text-gray-500 font-bold uppercase">
+              Instructor Name:
+            </span>{" "}
+            {instructorName}
+          </h2>
+        </h2>
+        <h2 className="card-title">
+          <span className="text-gray-500 font-bold uppercase">Name:</span>{" "}
+          {name}
+        </h2>
+        <h2>
+          <span className="text-gray-500 font-bold uppercase">
+            Instructor Email:
+          </span>{" "}
+          {email}
+        </h2>
+        <h2>
+          <span className="text-gray-500 font-bold uppercase">
+            Available Seats:
+          </span>{" "}
+          {availableSeats}
+        </h2>
+        <h2>
+          <span className="text-gray-500 font-bold uppercase">Price:</span>{" "}
+          {price}
+        </h2>
+        <h2>
+          <span className="text-gray-500 font-bold uppercase">Status:</span>{" "}
           {status}
-        </div>
-      </td>
-      <td className="bg-white text-black">
-        <button
-          onClick={handleFeedback}
-          disabled={status !== "Approved"} // Disable the button if status is not 'approved'
-          className={`btn ${
-            status !== "Approved" ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-        >
-          Feedback
-        </button>
-      </td>
-      <td className="bg-white text-black">
-        <Link to={`/dashboard/updateClass/${_id}`}><button
-          className="btn mt-5 text-white"
-          style={{ backgroundColor: "#07332F" }}
-        >
-          Update
-        </button></Link>
-      </td>
-      {isModalOpen && (
-        <dialog
-          id="my_modal_5"
-          className="modal modal-bottom sm:modal-middle"
-          open
-        >
-          <form method="dialog" className="modal-box bg-white">
-            <div className="modal-content">
-              <label htmlFor="feedback-input" className="block mb-2">
-                Feedback:
-              </label>
-              <textarea
-                id="feedback-input"
-                className="w-full rounded-md border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-300 text-black"
-                rows="4"
-              ></textarea>
-            </div>
-            <div className="modal-action">
-              {/* If there is a button in the form, it will close the modal */}
-              <button className="btn" onClick={() => setIsModalOpen(false)}>
-                Close
+        </h2>
+        <h2>
+          <span className="text-gray-500 font-bold uppercase">Feedback:</span>{" "}
+          {feedback}
+        </h2>
+        <div className="card-actions justify-end">
+          <div className=" text-black">
+            <Link to={`/dashboard/updateClass/${_id}`}>
+              <button
+                className="btn mt-5 text-white"
+                style={{ backgroundColor: "#07332F" }}
+              >
+                Update
               </button>
-            </div>
-          </form>
-        </dialog>
-      )}
-    </tr>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default DisplayClass;
 
+{
+  /* <div className="card w-[550px] h-[500px] bg-gray-300 shadow-xl">
+<figure className="px-10 pt-10 ">
+  <img src={image}  className=" h-auto w-auto rounded-lg" />
+</figure>
+<div className="card-body items-left text-left">
+  <h2 className="card-title"><span className='text-gray-500 font-bold uppercase'>Instructor Name:</span> {instructorName}</h2>
+ 
+  <div className=" text-black">
+<Link to={`/dashboard/updateClass/${_id}`}><button
+className="btn mt-5 text-white"
+style={{ backgroundColor: "#07332F" }}
+>
+Update
+</button></Link>
+</div>
+
+// </div>
+// </div> */
+}

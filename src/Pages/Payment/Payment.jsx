@@ -6,6 +6,7 @@ import useClass from '../../hooks/useClass';
 import SectionTitle from '../../components/SectionTitle';
 const stripePromise=loadStripe(import.meta.env.VITE_Payment_Gateway_Pk)
 
+
 const Payment = () => {
     console.log(stripePromise)
     const [bookedClass]=useClass()

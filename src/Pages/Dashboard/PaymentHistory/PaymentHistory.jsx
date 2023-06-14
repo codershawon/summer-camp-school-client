@@ -19,22 +19,23 @@ const PaymentHistory = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/payments/${item._id}`, {
+        fetch(`https://summer-camp-school-server-side.vercel.app/payments/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              refetch();
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
           });
       }
     });
   };
+  refetch()
   const sortedClasses = enrolledClasses.sort((a, b) =>
-  new Date(a.enrollmentTime) - new Date(b.enrollmentTime)
+  new Date(b.enrollmentTime) - new Date(a.enrollmentTime)
 );
+
   
   return (
     <div>
@@ -60,7 +61,7 @@ const PaymentHistory = () => {
             <tr key={item._id}>
               <th className="bg-gray text-black">{index + 1}</th>
               <td className="w-20 h-20 rounded-lg bg-gray text-black">
-                {user.displayName}
+                {user?.displayName}
               </td>
               <td className="bg-gray text-black">{user.email}</td>
               <td className="bg-gray text-black">{item.transactionId}</td>

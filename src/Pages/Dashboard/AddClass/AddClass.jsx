@@ -15,19 +15,21 @@ const AddClass = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const { name, instructorName, email, availableSeats, price, image,status} = data;
+    const { name, instructorName, email, availableSeats, price, availableStudents, image,status,instructorImage} = data;
     const newClass = {
       name,
       instructorName,
       email,
       availableSeats,
+      availableStudents: parseFloat(availableStudents),
       price: parseFloat(price),
       image,
+      instructorImage,
       status: "Pending"
     };
     console.log(newClass);
     
-    fetch("http://localhost:4000/classes", {
+    fetch("https://summer-camp-school-server-side.vercel.app/classes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +94,7 @@ const AddClass = () => {
             id=""
             placeholder="Enter Instructor Name"
             defaultValue={user?.displayName}
-            readOnly
+            // readOnly
             {...register("instructorName", { required: true })}
           />
           <div>
@@ -122,6 +124,16 @@ const AddClass = () => {
               <span className="text-red-800">Email is required</span>
             )}
           </div>
+        </div>
+        <div className="font-bold mt-5 ">
+          <h5>Instructor Image</h5>
+          <input
+            type="text"
+            name="instructorImage"
+            placeholder="Enter Instructor Image URL"
+            className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+            {...register("instructorImage", { required: true })}
+          />
         </div>
         <div className="font-bold mt-5">
           <h5>Available Seats</h5>
@@ -160,6 +172,27 @@ const AddClass = () => {
             {" "}
             {errors.price?.type === "required" && (
               <span className="text-red-800">Price Field is required</span>
+            )}
+          </div>
+        </div>
+        <div className="font-bold mt-5">
+          <h5>Available Students</h5>
+          <input
+            className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+            type="number"
+            name="availableStudents" 
+            defaultValue={0}
+            id=""
+            placeholder="Enter Available Students"
+            {...register("availableStudents", {
+              required: true,
+            })}
+          />
+
+          <div>
+            {" "}
+            {errors.availableStudents?.type === "required" && (
+              <span className="text-red-800">Available Students is required</span>
             )}
           </div>
         </div>

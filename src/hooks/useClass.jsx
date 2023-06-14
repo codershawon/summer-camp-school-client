@@ -1,13 +1,13 @@
 import React from "react";
-import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "react-query";
+import useAuth from "./useAuth";
 
 const useClass = () => {
-  const { user } = useAuth();
+  const { user } = useAuth()
   console.log(user);
   const [axiosSecure] = useAxiosSecure(
-    "http://localhost:4000"
+    "https://summer-camp-school-server-side.vercel.app"
   );
   const {
     isLoading,

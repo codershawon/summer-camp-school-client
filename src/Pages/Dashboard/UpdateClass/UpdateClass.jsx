@@ -18,7 +18,7 @@ const UpdateClass = () => {
         const  price=form.price.value;
         const  image=form.image.value;
         const updatedClass={name,instructorName,email,availableSeats,price,image}
-        fetch(`http://localhost:4000/classes/${classes._id}`, {
+        fetch(`https://summer-camp-school-server-side.vercel.app/classes/${classes._id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

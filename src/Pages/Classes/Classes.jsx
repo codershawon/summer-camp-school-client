@@ -18,7 +18,8 @@ const Classes = () => {
               <th className="bg-[#07332F]"></th>
               <th className="bg-[#07332F]">IMAGE</th>
               <th className="bg-[#07332F]">NAME</th>
-              <th className="bg-[#07332F]">Available seats</th>
+              <th className="bg-[#07332F]">Available Seats</th>
+              <th className="bg-[#07332F]">Available Students</th>
               <th className="bg-[#07332F]">Price</th>
               <th className="bg-[#07332F]">Button</th>
             </tr>

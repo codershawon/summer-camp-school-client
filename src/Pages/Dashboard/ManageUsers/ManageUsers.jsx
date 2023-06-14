@@ -7,13 +7,13 @@ import { GiTeacher } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../../components/SectionTitle';
 const ManageUsers = () => {
-    const[axiosSecure]=useAxiosSecure("http://localhost:4000")
+    const[axiosSecure]=useAxiosSecure("https://summer-camp-school-server-side.vercel.app")
     const {data:user=[],refetch}=useQuery(["user"],async()=>{
         const res= await axiosSecure.get(`/user`)
         return res.data
     })
     const handleMakeAdmin=user=>{
-        fetch(`http://localhost:4000/user/admin/${user._id}`,{
+        fetch(`https://summer-camp-school-server-side.vercel.app/user/admin/${user._id}`,{
             method:"PATCH",
             headers:{
                 "Content-Type":"application/json"
@@ -33,7 +33,7 @@ const ManageUsers = () => {
         })
     }
     const handleMakeInstructor=user=>{
-        fetch(`http://localhost:4000/user/instructor/${user._id}`,{
+        fetch(`https://summer-camp-school-server-side.vercel.app/user/instructor/${user._id}`,{
             method:"PATCH",
             headers:{
                 "Content-Type":"application/json"
@@ -63,7 +63,7 @@ const ManageUsers = () => {
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:4000/user/${user._id}`, {
+            fetch(`https://summer-camp-school-server-side.vercel.app/user/${user._id}`, {
               method: "DELETE",
             })
               .then((res) => res.json())
