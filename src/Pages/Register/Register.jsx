@@ -1,16 +1,18 @@
 import React, { useRef } from "react";
 import Container from "../Shared/Container";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FcGoogle } from 'react-icons/fc'
 import { useForm } from "react-hook-form";
-import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile,signInWithGoogle } = useAuth();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -53,13 +55,29 @@ const Register = () => {
       .catch((error) => console.log(error));
     })
   };
+
+  const handleGoogleSignIn=()=>{
+    signInWithGoogle().then(result=>{
+        const loggedUser=result.user
+        const saveUser={name:loggedUser?.displayName,email:loggedUser?.email}
+        fetch("https://summer-camp-school-server-side.vercel.app/user",{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(saveUser)
+        }).then(res=>res.json()).then(()=>{
+              navigate(from, { replace: true })
+        })
+      })
+    }
   return (
     <Container>
         <Helmet>
           <title>Summer Camp School || SignUp</title>
         </Helmet>
-      <div className="flex items-center justify-center gap-6 mt-8">
-        <img className="h-[800px] w-[800px] rounded-lg"
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-6 mt-8">
+        <img className="w-full md:w-[800px] rounded-lg"
           src="https://i.ibb.co/Ssv6t5R/5041145-removebg-preview.png"
           alt=""
         />
@@ -69,6 +87,7 @@ const Register = () => {
             borderRadius: "10px",
             padding: "20px",
           }}
+          className="w-full h-full md:h-[750px] md:w-full lg:w-[500px]"
         >
           <form onSubmit={handleSubmit(onSubmit)}>
             <h1 className="text-center text-3xl font-bold mb-9" style={{color:"#07332F"}}>
@@ -77,7 +96,7 @@ const Register = () => {
             <div className="font-bold">
               <h5>Name</h5>
               <input
-                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                className="w-full md:w-full h-12 bg-[#F3F3F3] rounded-lg pl-3"
                 type="text"
                 name="name"
                 id=""
@@ -93,7 +112,7 @@ const Register = () => {
             <div className="font-bold mt-5">
               <h5>Email</h5>
               <input
-                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                className="w-full md:w-full h-12 bg-[#F3F3F3] rounded-lg pl-3 "
                 type="email"
                 name="email"
                 id=""
@@ -109,7 +128,7 @@ const Register = () => {
             <div className="font-bold mt-5">
               <h5>Photo URL</h5>
               <input
-                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                className="w-full md:w-full h-12 bg-[#F3F3F3] rounded-lg pl-3"
                 type="text"
                 name="photo"
                 id=""
@@ -125,7 +144,7 @@ const Register = () => {
             <div className="font-bold mt-5">
               <h5>Password</h5>
               <input
-                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                className="w-full md:w-full h-12 bg-[#F3F3F3] rounded-lg pl-3"
                 type="password"
                 name="password"
                 id=""
@@ -164,7 +183,7 @@ const Register = () => {
             <div className="font-bold mt-5">
               <h5>Confirm Password</h5>
               <input
-                className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                className="w-full md:w-full h-12 bg-[#F3F3F3] rounded-lg pl-3"
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"
@@ -182,7 +201,7 @@ const Register = () => {
                 )}
               </div>
             </div>
-            <button className="btn mt-5 w-[450px] text-white" style={{backgroundColor:"#07332F"}}>
+            <button className="btn mt-5 w-full text-white" style={{backgroundColor:"#07332F"}}>
               Create Account
             </button>
             <p className="text-center mt-4">
@@ -192,9 +211,16 @@ const Register = () => {
               </span>
             </p>
           </form>
-          <span className="ml-52">
-            <SocialLogin />
-          </span>
+          <div
+                        onClick={handleGoogleSignIn}
+                        className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer w-full mx-auto pl-12 rounded-md bg-[#197685] bg-opacity-10"
+                      >
+                        <FcGoogle size={32} />
+
+                        <p className="font-semibold text-gray-600">
+                          Continue with Google
+                        </p>
+                      </div>
         </div>
       </div>
     </Container>
