@@ -24,10 +24,10 @@ const PopularInstructors = () => {
       }}>
         <div className="mt-10 mb-20">
           <SectionTitle heading="POPULAR INSTRUCTORS" />
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2 lg:gap-3">
             {topInstructors.map((item) => (
               <img
-                className="h-[600px] w-[570px] gap-2 mb-3 rounded-lg"
+                className="h-full md:h-[500px] w-full md:w-[500px] mx-auto gap-2 mb-3 mt-4 rounded-lg"
                 key={item._id}
                 src={item.instructorImage}
                 alt=""

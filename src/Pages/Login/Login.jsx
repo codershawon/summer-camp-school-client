@@ -39,55 +39,55 @@ const Login = () => {
   };
   return (
     <Container>
-      {" "}
       <div>
         <Helmet>
           <title>Summer Camp School || SignIn</title>
         </Helmet>
-        <div className="flex items-center justify-center gap-6 mt-20">
+        <div className="flex flex-col md:flex-col lg:flex-row items-center justify-center gap-3 mt-20">
           <img
             src="https://i.ibb.co/Ssv6t5R/5041145-removebg-preview.png"
             alt=""
+            className="w-full mx-auto"
           />
           <div
             style={{
               border: "2px solid gray",
               borderRadius: "10px",
               padding: "20px",
+              width: "90%", // Adjusted width for better responsiveness
             }}
+            className="w-full md:w-full lg:w-[400px]"
           >
             <form onSubmit={handleLogin}>
               <h1
-                className="text-center text-3xl font-bold mb-9"
+                className="text-center text-3xl font-bold mb-6"
                 style={{ color: "#07332F" }}
               >
                 Sign In to Artisans' Camp
               </h1>
-              <div className="font-bold mt-5">
+              <div className="font-bold">
                 <h5>Email</h5>
                 <input
-                  className="w-[350px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                  className="w-full h-12 bg-[#F3F3F3] rounded-lg pl-3 mb-5"
                   type="email"
                   name="email"
-                  id=""
                   placeholder="Enter your email"
                 />
               </div>
-              <div className="font-bold mt-5">
+              <div className="font-bold">
                 <h5>Password</h5>
                 {control ? (
                   <>
                     <input
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-[350px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                      className="w-full h-12 bg-[#F3F3F3] rounded-lg pl-3 mb-5"
                       type="text"
                       name="password"
-                      id=""
                       placeholder="Enter your password"
                     />
                     <span
                       onClick={() => setControl(!control)}
-                      className="relative left-80 bottom-8"
+                      className="absolute right-0 bottom-0 mr-3 mb-3"
                     >
                       <FaEye />
                     </span>
@@ -96,15 +96,14 @@ const Login = () => {
                   <>
                     <input
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-[350px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+                      className="w-full h-12 bg-[#F3F3F3] rounded-lg pl-3 mb-5"
                       type="password"
                       name="password"
-                      id=""
                       placeholder="Enter your password"
                     />
                     <span
                       onClick={() => setControl(!control)}
-                      className="relative left-80 bottom-8"
+                      className="absolute right-64 top-96 -bottom-72 mr-3 mb-3"
                     >
                       <FaEyeSlash />
                     </span>
@@ -112,7 +111,7 @@ const Login = () => {
                 )}
               </div>
               <button
-                className="btn text-white mt-5 w-[350px]"
+                className="btn text-white w-full"
                 style={{ backgroundColor: "#07332F" }}
               >
                 Login
@@ -124,8 +123,8 @@ const Login = () => {
                 </span>
               </p>
             </form>
-            <span className="text-center ml-40 mt-6">
-              <SocialLogin></SocialLogin>
+            <span className="absolute right-full mt-10">
+              <SocialLogin />
             </span>
           </div>
         </div>

@@ -4,8 +4,9 @@ import { AiFillGoogleCircle, AiFillLinkedin, AiOutlineTwitter } from 'react-icon
 
 const Footer = () => {
     return (
+      <div className='bg-base-200'>
 <Container>
-  <footer className="footer p-10 bg-base-200 text-base-content">
+  <footer className="footer p-10 text-base-content">
     <div>
       <span className="footer-title">Explore</span>
       <a className="link link-hover">Home</a>
@@ -59,6 +60,7 @@ const Footer = () => {
     </div>
   </footer>
 </Container>
+</div>
 
     );
 };

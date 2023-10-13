@@ -94,7 +94,7 @@ const AddClass = () => {
             id=""
             placeholder="Enter Instructor Name"
             defaultValue={user?.displayName}
-            // readOnly
+            readOnly
             {...register("instructorName", { required: true })}
           />
           <div>

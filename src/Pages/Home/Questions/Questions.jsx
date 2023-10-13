@@ -10,12 +10,12 @@ const Questions = () => {
       <div>
         <SectionTitle heading="FREQUENTLY ASKED QUESTIONS" />
         <Tabs className='mb-10'>
-          <TabList className="btn-group btn-group-vertical lg:btn-group-horizontal text-white ml-60 ">
-            <Tab className="btn  w-96" style={{ backgroundColor: "#07332F" }}>
+          <TabList className="btn-group btn-group-vertical lg:btn-group-horizontal text-white w-full flex justify-center mx-auto">
+            <Tab className="btn w-auto" style={{ backgroundColor: "#07332F" }}>
               General Information
             </Tab>
-            <Tab className="btn w-96">Registration and Enrollment</Tab>
-            <Tab className="btn w-96">Camp Activities and Workshops</Tab>
+            <Tab className="btn w-auto">Registration and Enrollment</Tab>
+            <Tab className="btn w-auto">Camp Activities and Workshops</Tab>
             {/* Add more Tab components for additional questions */}
           </TabList>
 

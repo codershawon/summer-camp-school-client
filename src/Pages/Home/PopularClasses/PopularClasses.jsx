@@ -12,10 +12,10 @@ const PopularClasses = () => {
     return (
         <Container>
             <div className='mt-20 mb-20'>
-            <SectionTitle  heading="POPULAR CLASSES" />
-                <div className='grid grid-cols-3'>
+            <SectionTitle heading="POPULAR CLASSES" />
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6'>
                 {topClasses.map((item) => (
-              <img className='h-[600px] w-[570px] gap-2 mb-3 rounded-lg' key={item._id} src={item.image} alt="" />
+              <img className='h-full md:h-[500px] w-full md:w-[500px]  mx-auto gap-2 mb-3 rounded-lg mt-4' key={item._id} src={item.image} alt="" />
         ))}
                 </div>
             </div>

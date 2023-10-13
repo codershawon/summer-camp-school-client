@@ -119,7 +119,7 @@ const ManageClasses = () => {
   return (
     <div>
       <SectionTitle heading="MANAGE CLASS" />
-      <div className="bg-gray-100  p-10 rounded-lg">
+      <div className="bg-gray-100  p-10 rounded-lg ml-10">
         <div className="overflow-x-auto">
           <table className="table w-[920px] mx-auto mt-4 text-white">
             {/* head */}

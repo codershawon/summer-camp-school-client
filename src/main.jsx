@@ -5,7 +5,7 @@ import "./index.css";
 import Main from "./Layout/Main";
 import RouteError from "./Pages/RouteError/RouteError";
 import Home from "./Pages/Home/Home/Home";
-import AuthProviders from "./Providers/AuthProviders";
+import AuthProviders from "./Providers/AuthProvider";
 import { HelmetProvider } from "react-helmet-async";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
@@ -25,6 +25,7 @@ import ManageClasses from "./Pages/Dashboard/ManageClasses/ManageClasses";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import InstructorRoute from "./Routes/InstructorRoute";
 import UpdateClass from "./Pages/Dashboard/UpdateClass/UpdateClass";
+import AdminHome from "./Pages/Dashboard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -46,12 +47,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <Instructors></Instructors>,
+        element: <PrivateRoutes><Instructors></Instructors></PrivateRoutes>,
       },
       {
         path: "/classes",
         element: <Classes></Classes>,
-      },
+      }
     ],
   },
   {
@@ -103,6 +104,14 @@ const router = createBrowserRouter([
       },
 
       //admin routes
+      {
+        path:"admin",
+        element:(
+          <AdminRoute>
+            <AdminHome/>
+          </AdminRoute>
+        )
+      },
       {
         path: "manageUsers",
         element: (
