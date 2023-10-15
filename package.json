@@ -16,6 +16,7 @@
     "axios": "^1.4.0",
     "firebase": "^9.22.1",
     "localforage": "^1.10.0",
+    "lottie-react": "^2.4.0",
     "match-sorter": "^6.3.1",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
@@ -33,7 +34,7 @@
     "socket.io-client": "^4.7.2",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.11",
-    "swiper": "^9.3.2"
+    "swiper": "^10.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

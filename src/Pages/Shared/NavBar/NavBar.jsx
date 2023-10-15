@@ -31,8 +31,8 @@ const NavBar = () => {
                             <li>{user && <NavLink to="/dashboard"><a>Dashboard</a></NavLink>}</li>
                         </ul>
                     </div>
-                    <img className='h-14 w-14' src="https://i.ibb.co/2hYBMPs/8955297-removebg-preview.png" alt="" />
-                    <a className="btn btn-ghost normal-case text-xl lg:text-4xl -ml-6 font-bold hidden lg:block text-gray-300">Artisans' Camp</a>
+                    <img className='h-14 w-14' src="https://i.ibb.co/P4CLbxW/Screenshot-2023-10-15-111639-removebg-preview.png" alt="" />
+                    <a className="btn btn-ghost normal-case text-xl lg:text-4xl -ml-2 font-bold hidden lg:block text-gray-300">Artisans' Camp</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 ml-0 md:ml-20 text-xl font-semibold">

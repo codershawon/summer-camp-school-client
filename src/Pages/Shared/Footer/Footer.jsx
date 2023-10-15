@@ -30,7 +30,7 @@ const Footer = () => {
   </footer>
   <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
     <div className="items-center grid-flow-col">
-    <img className='h-14 w-14' src="https://i.ibb.co/2hYBMPs/8955297-removebg-preview.png" alt="" />
+    <img className='h-14 w-14' src="https://i.ibb.co/P4CLbxW/Screenshot-2023-10-15-111639-removebg-preview.png" alt="" />
       <p>Artisans' Camp</p>
     </div>
     <div className="md:place-self-center md:justify-self-end">

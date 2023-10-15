@@ -10,8 +10,8 @@ const Classes = () => {
   return (
     <div className="mb-10">
       <SectionTitle heading="APPROVED CLASS" />
-      <div className="bg-gray-100  p-10 rounded-lg w-[1200px] mx-auto">
-        <table className="table w-[920px] mx-auto mt-4 text-white">
+      <div className="bg-gray-100 p-5 rounded-lg mx-auto w-full sm:w-[95%] md:w-[90%] lg:w-[80%]">
+        <table className="min-w-full table w-full sm:w-[95%] md:w-[90%] lg:w-[80%] mx-auto mt-4 text-white">
           {/* head */}
           <thead>
             <tr className="uppercase text-white ">

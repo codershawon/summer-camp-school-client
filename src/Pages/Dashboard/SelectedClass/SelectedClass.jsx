@@ -9,6 +9,8 @@ import SectionTitle from "../../../components/SectionTitle";
 const SelectedClass = () => {
   const [bookedClass, refetch] = useClass();
   const total = bookedClass.reduce((sum, item) => item.price + sum, 0);
+
+
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -40,8 +42,8 @@ const SelectedClass = () => {
           <title>Summer Camp School || Selected Classes</title>
         </Helmet>
         <SectionTitle  heading="SELECTED CLASSES" />
-        <div className="bg-gray-100 w-[990px] p-10 rounded-lg">
-          <div className="flex justify-between">
+        <div className="bg-gray-100 w-full md:w-[1200px] mx-auto p-10 rounded-lg">
+          <div className="flex justify-around gap-80">
             <h2 className="text-2xl font-bold uppercase">
               Total Selected Classes: {bookedClass.length}
             </h2>
@@ -50,7 +52,7 @@ const SelectedClass = () => {
             </h2>
           </div>
           <div className="overflow-x-auto">
-            <table className="table w-[920px] mx-auto mt-4 text-white">
+            <table className="table bg-gray-100 p-5 rounded-lg mx-auto sm:w-[95%] lg:w-[90%] text-white mt-5">
               {/* head */}
               <thead>
                 <tr className="text-white uppercase">
@@ -71,7 +73,7 @@ const SelectedClass = () => {
                   <tr key={item._id}>
                     <th className="bg-gray text-black">{index + 1}</th>
                     <td>
-                      <img className="w-20 h-20 rounded-lg bg-gray" src={item.image} alt="" />
+                      <img className="w-16 h-16 rounded-lg bg-gray" src={item.image} alt="" />
                     </td>
                     <td className="bg-gray text-black">{item.name}</td>
                     <td className="bg-gray text-black">

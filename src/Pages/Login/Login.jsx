@@ -5,7 +5,9 @@ import useAuth from "../../hooks/useAuth";
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import loginLottie from "./Login.json"
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
 
 const Login = () => {
   const { signInUser,signInWithGoogle } = useAuth();
@@ -59,12 +61,8 @@ const Login = () => {
         <Helmet>
           <title>Summer Camp School || SignIn</title>
         </Helmet>
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 mt-8">
-          <img
-            src="https://i.ibb.co/Ssv6t5R/5041145-removebg-preview.png"
-            alt=""
-            className="w-full md:w-[700px]"
-          />
+        <div className="flex flex-col lg:flex-row items-center justify-center mt-48 mb-3">
+        <Lottie className="w-full lg:h-[500px]" animationData={loginLottie} />
           <div
             style={{
               border: "2px solid gray",
@@ -72,7 +70,7 @@ const Login = () => {
               padding: "20px",
 
             }}
-            className="w-full h-full md:h-[500px] md:w-full lg:w-[450px]"
+            className="w-full max-w-sm h-full md:h-[500px] mt-10 "
           >
             <form onSubmit={handleLogin}>
               <h1
@@ -103,7 +101,7 @@ const Login = () => {
                     />
                     <span
                       onClick={() => setControl(!control)}
-                      className="relative left-64 sm:left-96 md:left-96 -top-12"
+                      className="relative left-80  md:left-80 -top-12"
                     >
                       <FaEye />
                     </span>
@@ -119,7 +117,7 @@ const Login = () => {
                     />
                     <span
                       onClick={() => setControl(!control)}
-                      className="relative left-64 sm:left-96 md:left-96 -top-12"
+                      className="relative left-80  md:left-80  -top-12"
                     >
                       <FaEyeSlash />
                     </span>

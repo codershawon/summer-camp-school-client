@@ -15,10 +15,10 @@ const DisplayClass = ({ item}) => {
   } = item;
 
   return (
-    <div className="card card-side bg-gray-300 shadow-xl h-[400px] w-[1000px] flex items-center">
+    <div className="card card-side bg-gray-300 shadow-xl h-full md:h-[400px] w-full sm:w-[500px] md:w-[1000px] mx-auto flex flex-col md:flex-row items-center">
       <figure className="px-10 pt-10 ">
         {" "}
-        <img src={image} className=" h-[350px] w-[350px] rounded-lg mb-10" />
+        <img src={image} className=" h-[350px] w-full md:w-[350px] rounded-lg mb-10" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -57,7 +57,7 @@ const DisplayClass = ({ item}) => {
           <span className="text-gray-500 font-bold uppercase">Feedback:</span>{" "}
           {feedback}
         </h2>
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-start md:justify-end">
           <div className=" text-black">
             <Link to={`/dashboard/updateClass/${_id}`}>
               <button

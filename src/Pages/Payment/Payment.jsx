@@ -13,7 +13,7 @@ const Payment = () => {
     const total = bookedClass.reduce((sum, item) => item.price + sum, 0);
     const price=parseFloat(total.toFixed(2))
     return (
-        <div>
+        <div className='mt-10'>
             <SectionTitle  heading="PAYMENT" />
             <Elements stripe={stripePromise}> <CheckoutForm bookedClass={bookedClass}  price={price}></CheckoutForm></Elements>
         </div>

@@ -40,8 +40,8 @@ const PaymentHistory = () => {
   return (
     <div>
        <SectionTitle  heading="PAYMENT HISTORY" />
-       <div className="bg-gray-100  p-10 rounded-lg">
-      <table className="table w-[920px] mx-auto mt-4 text-white">
+       <div className="bg-gray-100 p-5 rounded-lg mx-auto w-full sm:w-[95%] lg:w-[90%]">
+      <table className="table bg-gray-100  mx-auto w-full sm:w-[95%] lg:w-[90%] mt-4 text-white">
         {/* head */}
         <thead>
           <tr className="text-white uppercase">

@@ -5,7 +5,9 @@ import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import RegisterLottie from "./Register.json";
 import { Helmet } from "react-helmet-async";
+import Lottie from "lottie-react";
 
 const Register = () => {
   const { createUser, updateUserProfile,signInWithGoogle } = useAuth();
@@ -76,18 +78,15 @@ const Register = () => {
         <Helmet>
           <title>Summer Camp School || SignUp</title>
         </Helmet>
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-6 mt-8">
-        <img className="w-full md:w-[800px] rounded-lg"
-          src="https://i.ibb.co/Ssv6t5R/5041145-removebg-preview.png"
-          alt=""
-        />
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-6 mt-8 mb-4">
+      <Lottie className="w-full lg:h-[500px]" animationData={RegisterLottie} />
         <div
           style={{
             border: "2px solid gray",
             borderRadius: "10px",
             padding: "20px",
           }}
-          className="w-full h-full md:h-[750px] md:w-full lg:w-[500px]"
+          className="w-full h-full md:h-[750px] max-w-md"
         >
           <form onSubmit={handleSubmit(onSubmit)}>
             <h1 className="text-center text-3xl font-bold mb-9" style={{color:"#07332F"}}>

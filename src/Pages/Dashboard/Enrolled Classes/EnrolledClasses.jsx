@@ -36,8 +36,8 @@ const EnrolledClasses = () => {
     return (
         <div>
              <SectionTitle  heading="ENROLLED CLASS" />
-           <div className="bg-gray-100  p-10 rounded-lg">
-           <table className="table w-[920px] mx-auto mt-4 text-white">
+           <div className="bg-gray-100 p-5 rounded-lg mx-auto sm:w-[95%] md:w-[90%] lg:w-[80%]">
+           <table className="table bg-gray-100 p-5 rounded-lg mx-auto sm:w-[95%] md:w-[90%] lg:w-[80%] mt-4 text-white">
               {/* head */}
               <thead>
                 <tr className="text-white uppercase">
@@ -56,7 +56,7 @@ const EnrolledClasses = () => {
                   <tr key={item._id}>
                     <th className="bg-gray text-black">{index + 1}</th>
                     <td>
-                      <img className="w-20 h-20 rounded-lg bg-gray" src={item.image} alt="" />
+                      <img className="w-16 h-16 rounded-lg bg-gray" src={item.image} alt="" />
                     </td>
                     <td className="bg-gray text-black">{item.className}</td>
                     <td className="bg-gray text-black">

@@ -11,7 +11,7 @@ const MyClass = () => {
   return (
     <div className="mb-10">
       <SectionTitle heading="MY CLASS" />
-      <h1 className="text-xl font-bold">
+      <h1 className="text-xl font-bold w-full sm:w-[500px] md:w-[1000px] mx-auto mt-7">
         Total Enrolled Students: {instructor.length}
       </h1>
       <div className="grid grid-cols-1 gap-6 mt-6">

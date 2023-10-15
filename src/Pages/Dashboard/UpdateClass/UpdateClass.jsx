@@ -43,11 +43,11 @@ const UpdateClass = () => {
             <SectionTitle heading="UPDATE CLASS" /> 
      
      <form onSubmit={handleUpdateClass}>
-     <div className="bg-gray-300 w-[600px] p-10 rounded-lg mx-auto">
+     <div className="bg-gray-300 w-[600px] max-w-xl p-10 rounded-lg mx-auto">
        <div className="font-bold">
          <h5>Name</h5>
          <input
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
            type="text"
            name="name"
            id=""
@@ -60,13 +60,13 @@ const UpdateClass = () => {
            type="text"
            name="image"
            placeholder="Enter Image URL"
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
          />
        </div>
        <div className="font-bold mt-5">
          <h5>Instructor Name</h5>
          <input
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
            type="text"
            name="instructorName"
            id=""
@@ -78,7 +78,7 @@ const UpdateClass = () => {
        <div className="font-bold mt-5">
          <h5>Instructor Email</h5>
          <input
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
            type="email"
            name="email"
            id=""
@@ -90,7 +90,7 @@ const UpdateClass = () => {
        <div className="font-bold mt-5">
          <h5>Available Seats</h5>
          <input
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
            type="number"
            name="availableSeats"
            id=""
@@ -100,7 +100,7 @@ const UpdateClass = () => {
        <div className="font-bold mt-5">
          <h5>Price</h5>
          <input
-           className="w-[450px] h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
+           className="w-full md:w-full  h-[50px] bg-[#F3F3F3] rounded-lg pl-3"
            type="number"
            name="price"
            id=""
@@ -108,7 +108,7 @@ const UpdateClass = () => {
          />
        </div>
        <input
-         className="btn mt-5 w-[450px] text-white"
+         className="btn mt-5 w-full md:w-full  text-white"
          style={{ backgroundColor: "#07332F" }}
          type="submit"
          value="Update Class"

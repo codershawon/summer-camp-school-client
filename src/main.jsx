@@ -26,6 +26,8 @@ import PrivateRoutes from "./Routes/PrivateRoutes";
 import InstructorRoute from "./Routes/InstructorRoute";
 import UpdateClass from "./Pages/Dashboard/UpdateClass/UpdateClass";
 import AdminHome from "./Pages/Dashboard/AdminHome/AdminHome";
+import InstructorHome from "./Pages/Dashboard/InstructorHome/InstructorHome";
+import StudentHome from "./Pages/Dashboard/StudentHome/StudentHome";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
     children: [
       //student routes
       {
+        path:"student",
+        element:<StudentHome/>
+      },
+      {
         path: "bookedClass",
         element: <SelectedClass></SelectedClass>,
       },
@@ -78,6 +84,14 @@ const router = createBrowserRouter([
       },
 
       //instructor routes
+      {
+        path:"instructor",
+        element:(
+          <InstructorRoute>
+          <InstructorHome/>
+        </InstructorRoute>
+        )
+      },
       {
         path: "addClass",
         element: (

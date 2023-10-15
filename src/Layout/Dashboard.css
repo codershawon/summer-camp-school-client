@@ -3,3 +3,9 @@
     list-style-type: none; 
     margin-bottom: 1rem; 
   }
+  .topMarginLink {
+    margin-top: 30px;
+  }
+  .border-gray-600 {
+    border-color: #ccc;
+  }

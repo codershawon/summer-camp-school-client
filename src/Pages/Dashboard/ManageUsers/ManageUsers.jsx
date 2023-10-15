@@ -79,9 +79,9 @@ const ManageUsers = () => {
     return (
         <div>
                 <SectionTitle  heading="MANAGE USERS" />
-           <div className="bg-gray-100 w-[990px] p-10 rounded-lg">
+           <div className="bg-gray-100 p-5 rounded-lg mx-auto sm:w-[95%] md:w-[90%] lg:w-[80%]">
            <div className="overflow-x-auto">
-            <table className="table w-[920px] mx-auto mt-4 text-white">
+            <table className="table mx-auto sm:w-[95%] md:w-[90%] lg:w-[80%] mt-4 text-white">
               {/* head */}
               <thead>
                 <tr className="text-white uppercase">
